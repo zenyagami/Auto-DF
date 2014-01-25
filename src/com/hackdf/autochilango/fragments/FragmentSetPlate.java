@@ -27,7 +27,13 @@ public class FragmentSetPlate extends Fragment implements OnClickListener {
 
 	private GetPlateInfo getPlateInfo;
 	private EditText etPlates;
-
+	public static FragmentSetPlate newInstance(boolean isStolen) {
+		FragmentSetPlate f = new FragmentSetPlate();
+		Bundle args = new Bundle();
+		args.putBoolean("title", isStolen);
+		f.setArguments(args);
+		return f;
+	}
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
