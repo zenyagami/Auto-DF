@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.android.navigationdrawerexample;
+package com.hackdf.autochilango;
 
 import java.util.Locale;
 
