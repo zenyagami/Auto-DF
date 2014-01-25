@@ -16,6 +16,7 @@
 
 package com.hackdf.autochilango;
 
+import com.hackdf.autochilango.fragments.FragmentInfoAire;
 import com.hackdf.autochilango.fragments.FragmentInfoPlaca;
 import com.hackdf.autochilango.fragments.FragmentSetPlate;
 import com.hackdf.autochilango.fragments.FragmentlInfoEstacionamiento;
@@ -165,6 +166,9 @@ public class MainActivity extends FragmentActivity {
 			break;
 		case 4: 
 			fragment= new FragmentlInfoEstacionamiento();
+			break;
+		case 5: 
+			fragment= new FragmentInfoAire();
 			break;
 		default:
 			fragment = new FragmentSetPlate();
