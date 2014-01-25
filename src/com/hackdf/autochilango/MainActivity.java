@@ -16,6 +16,8 @@
 
 package com.hackdf.autochilango;
 
+import com.hackdf.autochilango.fragments.FragmentInfoPlaca;
+import com.hackdf.autochilango.fragments.FragmentSetPlate;
 
 import android.app.SearchManager;
 import android.content.Intent;
@@ -157,6 +159,9 @@ public class MainActivity extends FragmentActivity {
 			break;
 
 
+		case 3:
+			fragment = new FragmentInfoPlaca();
+			break;
 		default:
 			fragment = new FragmentSetPlate();
 			break;
