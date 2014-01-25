@@ -24,8 +24,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class FragmentInfoPlaca extends Fragment implements OnClickListener{
-
+	public static FragmentInfoPlaca newInstance(boolean isStolen) {
+		FragmentInfoPlaca f = new FragmentInfoPlaca();
+		Bundle args = new Bundle();
+		args.putBoolean("stolen", isStolen);
+		f.setArguments(args);
+		return f;
+	}
 	private View v;
+	private boolean isStolen;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -41,6 +48,7 @@ public class FragmentInfoPlaca extends Fragment implements OnClickListener{
 			Toast.makeText(getActivity(), "hubo un error al generar la Info :(", Toast.LENGTH_SHORT).show();
 			e.printStackTrace();
 		}
+		//si es robado mostramos la vista de roboo
 		
 		return v;
 	}

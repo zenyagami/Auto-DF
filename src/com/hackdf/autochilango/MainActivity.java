@@ -165,7 +165,7 @@ public class MainActivity extends FragmentActivity {
 			fragment  = new FragmentInfoPlaca();
 			break;
 		case NAVIGATION_ROBO: 
-			fragment = new FragmentInfoPlaca();
+			fragment = FragmentSetPlate.newInstance(true);
 			break;
 		case NAVIGATION_VERIFICENTRO:
 			fragment= new FragmentInfoVerificentro();
