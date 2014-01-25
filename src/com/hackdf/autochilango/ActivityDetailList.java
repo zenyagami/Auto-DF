@@ -18,9 +18,9 @@ public class ActivityDetailList extends FragmentActivity {
 		getActionBar().setTitle(title);
 		Fragment fragment;
 		if (resourceId == 0) {
-			fragment = new FragmentVerificationList();
+			fragment = FragmentVerificationList.newInstance(title);
 		} else {
-			fragment = new FragmentVerificationList();
+			fragment = FragmentVerificationList.newInstance(title);
 		}
 		
 		FragmentManager fragmentManager = getSupportFragmentManager();

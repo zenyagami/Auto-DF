@@ -16,8 +16,10 @@ public class Parser {
 		{
 			return null;
 		}
+		
 		Car carInfo = new Car();
 		try {
+			response = response.getJSONObject("consulta");
 			carInfo.setPlates(response.getString("placa"));
 			if(response.has("tenencias") && response.getJSONObject("tenencias").has("tieneadeudos"))
 			{
@@ -43,6 +45,7 @@ public class Parser {
 					}
 					
 				}
+				carInfo.setOffenseList(offenseList);
 			}
 			if(response.has("verificaciones"))
 			{
@@ -66,6 +69,8 @@ public class Parser {
 					ver.setRejectCause(obj.getString("casua_rechazo"));
 					verifList.add(ver);
 				}
+				
+				carInfo.setVerificationList(verifList);
 				
 			}
 			
