@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/txtPlacaVigencia"
+        style="@style/CardText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Placa: AAAA Vigencia:10/02/14" />
+
+    <TextView
+        android:id="@+id/SerieVerif"
+        style="@style/CardText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Serie: AAAA" />
+
+    <TextView
+        android:id="@+id/txtMarcaGasolina"
+        style="@style/CardText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="VW Bora Gasolina" />
+
+    <TextView
+        android:id="@+id/txtVerificentroInfo"
+        style="@style/CardText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="09099 Fecha: 20/02/12 4:30" />
+
+    <TextView
+        android:id="@+id/txtVerifiResultado"
+        style="@style/CardText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Resultado:" />
+
+    <TextView
+        android:id="@+id/txtVerifiRechazado"
+        style="@style/CardText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rechazado" />
+
+</LinearLayout>

@@ -16,8 +16,15 @@ public class Parser {
 		{
 			return null;
 		}
+<<<<<<< HEAD
 		Car carInfo = new Car();
 		try {
+=======
+		
+		Car carInfo = new Car();
+		try {
+			response = response.getJSONObject("consulta");
+>>>>>>> 27ffbbee2694ed820763983d255da2ebf9d51f48
 			carInfo.setPlates(response.getString("placa"));
 			if(response.has("tenencias") && response.getJSONObject("tenencias").has("tieneadeudos"))
 			{
@@ -43,6 +50,10 @@ public class Parser {
 					}
 					
 				}
+<<<<<<< HEAD
+=======
+				carInfo.setOffenseList(offenseList);
+>>>>>>> 27ffbbee2694ed820763983d255da2ebf9d51f48
 			}
 			if(response.has("verificaciones"))
 			{
@@ -54,6 +65,8 @@ public class Parser {
 					ver.setVin(obj.getString("vin"));
 					ver.setBrand(obj.getString("marca"));
 					ver.setSubBrand(obj.getString("submarca"));
+					ver.setAnio(obj.getString("modelo"));
+					ver.setCombustible(obj.getString("combustible"));
 					ver.setCertificate(obj.getString("certificado"));
 					ver.setCanceled(!obj.getString("cancelado").equals("NO"));
 					ver.setValidity(obj.getString("vigencia"));
@@ -65,6 +78,11 @@ public class Parser {
 					verifList.add(ver);
 				}
 				
+<<<<<<< HEAD
+=======
+				carInfo.setVerificationList(verifList);
+				
+>>>>>>> 27ffbbee2694ed820763983d255da2ebf9d51f48
 			}
 			
 			
