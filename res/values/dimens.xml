@@ -1,0 +1,38 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+ 	<dimen name="TextAppearance_Large">22sp</dimen>
+ 	<dimen name="TextAppearance_Medium">18sp</dimen>
+ 	<dimen name="TextAppearance_Small">14sp</dimen>
+    <dimen name="card_temperature_size">112.0dip</dimen>
+    <dimen name="card_xl_text">35.0sp</dimen>
+    <dimen name="card_large_text">25.0sp</dimen>
+    <dimen name="card_medium_text">18.0sp</dimen>
+    <dimen name="card_small_text">14.0sp</dimen>
+    <dimen name="card_action_text">16.0sp</dimen>
+    <dimen name="card_padding">16.0dip</dimen>
+    <dimen name="text_block_top_padding">14.0dip</dimen>
+    <dimen name="text_block_bottom_padding">20.0dip</dimen>
+    <item type="dimen" name="text_block_side_padding">@dimen/card_padding</item>
+    <dimen name="card_horizontal_map_height">150.0dip</dimen>
+    <dimen name="horizontal_static_map_height">150.0dip</dimen>
+    <dimen name="card_action_button_height">48.0dip</dimen>
+    <dimen name="card_small_padding">12.0dip</dimen>
+    <dimen name="card_view_bottom_margin">40.0dip</dimen>
+    <dimen name="load_more_button_margin">40.0dip</dimen>
+    <dimen name="sample_card_width">375.0dip</dimen>
+
+     <dimen name="sticky_height">120dp</dimen>
+        <dimen name="card_outer_padding_firstlast">8dp</dimen>
+    <dimen name="card_outer_padding_top">2dp</dimen>
+    <dimen name="card_outer_padding_bottom">1dp</dimen>
+    <dimen name="card_outer_padding_horizontal">8dp</dimen>
+    <dimen name="card_inner_padding_vertical">8dp</dimen>
+    <dimen name="card_inner_padding_left">10dp</dimen>
+    <dimen name="card_inner_padding_right">5dp</dimen>
+     <dimen name="list_item_vert_margin">8dp</dimen>
+      <dimen name="card_default_padding">16dip</dimen>
+      <dimen name="min_default_padding">16dip</dimen>
+</resources>

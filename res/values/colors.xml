@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="window_theme">#ffe2e2e2</color>
+    <color name="window_theme2">#e5e6e7</color>
+    <color name="cards_blue">#35b6e5</color>
+    <color name="stroke">#dddddd</color>
+    <color name="text_light">#66000000</color>
+    <color name="card_text">#ff8d8d8d</color>
+    <color name="card_title_text">#ff707070</color>
+    <color name="card_light_text">#ffb5b5b5</color>
+    <color name="card_grid_text">#ff707070</color>
+    <color name="card_separator">#ffe5e5e5</color>
+    <color name="card_border">#ffdedede</color>
+    <color name="load_more_button_border">#ffdedede</color>
+    <color name="load_more_button_text">#ff888888</color>
+    <color name="first_run_text_shadow">#fff2f2f2</color>
+    <color name="ics_color">#0099CC</color>
+    <color name="ics_color_light">#31b6e7</color>
+    <color name="card_pressed">#7E0099CC</color>
+    <color name="gray_text">#ff7a7a7a</color>
+    <color name="ics_blue_bright">#38C0F4</color>
+    <color name="ics_blue_dark">#0099CC</color>
+    <color name="ics_blue_light">#33B5E5</color>
+    <color name="ics_green_dark">#669900</color>
+    <color name="ics_green_light">#99CC00</color>
+    <color name="ics_orange_dark">#FF8800</color>
+    <color name="ics_orange_light">#FFBB33</color>
+    <color name="ics_purple_dark">#9933CC</color>
+    <color name="ics_purple_light">#AA66CC</color>
+    <color name="ics_red_dark">#CC0000</color>
+    <color name="ics_red_light">#FF4444</color>
+    <color name="dark_gray">#333333</color>
+    <color name="shadow">#cc222222</color>
+    <color name="siglight_gray">#666666</color>
+    <color name="fg_primary">#ff333333</color>
+    <color name="fg_secondary">#ffaaaaaa</color>
+    <color name="card_header">#ff707070</color>
+
+</resources>
