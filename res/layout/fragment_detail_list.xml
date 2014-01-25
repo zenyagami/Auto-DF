@@ -8,10 +8,7 @@
 
     <TextView
         style="@style/CardTitle"
-<<<<<<< HEAD
-=======
         android:id="@+id/txtListDetailTitle"
->>>>>>> 27ffbbee2694ed820763983d255da2ebf9d51f48
         android:text="@string/app_name"
         android:layout_gravity="center"
         android:layout_width="wrap_content"

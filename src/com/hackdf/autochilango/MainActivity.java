@@ -16,15 +16,11 @@
 
 package com.hackdf.autochilango;
 
-<<<<<<< HEAD
-import android.app.SearchManager;
-=======
 import com.hackdf.autochilango.fragments.FragmentInfoAire;
 import com.hackdf.autochilango.fragments.FragmentInfoPlaca;
 import com.hackdf.autochilango.fragments.FragmentSetPlate;
 import com.hackdf.autochilango.fragments.FragmentlInfoEstacionamiento;
 
->>>>>>> 27ffbbee2694ed820763983d255da2ebf9d51f48
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -46,12 +42,9 @@ import com.hackdf.autochilango.fragments.FragmentInfoAire;
 import com.hackdf.autochilango.fragments.FragmentInfoNoCircula;
 import com.hackdf.autochilango.fragments.FragmentInfoPlaca;
 import com.hackdf.autochilango.fragments.FragmentInfoVerificentro;
-<<<<<<< HEAD
-import com.hackdf.autochilango.fragments.FragmentSetPlate;
-import com.hackdf.autochilango.fragments.FragmentlInfoEstacionamiento;
-=======
+
 import com.hackdf.autochilango.preferences.AppPreferences;
->>>>>>> 27ffbbee2694ed820763983d255da2ebf9d51f48
+
 
 public class MainActivity extends FragmentActivity {
     private DrawerLayout mDrawerLayout;

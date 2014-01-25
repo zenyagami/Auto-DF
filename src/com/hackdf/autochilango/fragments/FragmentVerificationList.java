@@ -23,8 +23,6 @@ import android.widget.Toast;
 
 public class FragmentVerificationList extends Fragment {
 
-<<<<<<< HEAD
-=======
 	public static FragmentVerificationList newInstance(String title) {
 		FragmentVerificationList f = new FragmentVerificationList();
 		Bundle args = new Bundle();
@@ -33,36 +31,10 @@ public class FragmentVerificationList extends Fragment {
 		return f;
 	}
 
->>>>>>> 27ffbbee2694ed820763983d255da2ebf9d51f48
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.fragment_detail_list, null);
-<<<<<<< HEAD
-		TextView txtTitle = (TextView)v.findViewById(R.id.txtDetailTitle);
-		String title = getArguments().getString("title");
-		txtTitle.setText(title);
-		ListView lv =(ListView)v.findViewById(R.id.lvCarInfo);
-		try {
-			Car carInfo = Parser.ParseCarInfoFromJson(new JSONObject(AppPreferences.getCurrentPlate(getActivity())));
-			if(carInfo!=null)
-			{
-				ArrayList<Verificacion> verifList = carInfo.getVerificationList();
-				if(verifList!=null)
-				{
-					AdapterVerifications adapter = new AdapterVerifications(getActivity(), AppPreferences.getCurrentPlate(getActivity()), verifList);
-					lv.setAdapter(adapter);
-				}
-				
-			}
-		} catch (JSONException e) {
-			e.printStackTrace();
-			Toast.makeText(getActivity(), "Error al obtener info de la placa", Toast.LENGTH_SHORT).show();
-			getActivity().finish();
-		}
-		
-		
-=======
 		TextView txtTitle = (TextView) v.findViewById(R.id.txtListDetailTitle);
 		String title = getArguments().getString("title");
 		txtTitle.setText(title);
@@ -89,7 +61,6 @@ public class FragmentVerificationList extends Fragment {
 			getActivity().finish();
 		}
 
->>>>>>> 27ffbbee2694ed820763983d255da2ebf9d51f48
 		return v;
 	}
 

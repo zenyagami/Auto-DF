@@ -60,15 +60,9 @@ public class FragmentInfoPlaca extends Fragment implements OnClickListener{
 		if(offenseList!=null && offenseList.size()>0)
 		{
 			Offenses offense = offenseList.get(0);
-<<<<<<< HEAD
-			txtNumberOffenses.setText(offenseList.size());
-			lastOffense = offense.getDateTime();
-			offenseStatus = offense.getSituation();
-=======
 			txtNumberOffenses.setText(""+offenseList.size());
 			lastOffense = String.format("Última Infracción: %s", offense.getDateTime());
 			offenseStatus = String.format("Estado: %s", offense.getSituation());
->>>>>>> 27ffbbee2694ed820763983d255da2ebf9d51f48
 		}else
 		{
 			lastOffense = "Sin Infracciones";
@@ -89,11 +83,7 @@ public class FragmentInfoPlaca extends Fragment implements OnClickListener{
 		String verificationResult;
 		if(verifList!=null && verifList.size()>0)
 		{
-<<<<<<< HEAD
-			((TextView)v.findViewById(R.id.txtNumberOfVerification)).setText(verifList.size());
-=======
 			((TextView)v.findViewById(R.id.txtNumberOfVerification)).setText(""+verifList.size());
->>>>>>> 27ffbbee2694ed820763983d255da2ebf9d51f48
 			Verificacion verif = verifList.get(0);
 			modeloCarro =   "Modelo :"+verif.getBrand()+ " "+verif.getSubBrand()+ " "+ verif.getAnio();
 			lastVerification = "Última verificación: "+verif.getVerificationDate() + " Hora: "+verif.getVerificationTime();
