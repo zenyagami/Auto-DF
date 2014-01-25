@@ -16,6 +16,7 @@
 
 package com.hackdf.autochilango;
 
+import com.hackdf.autochilango.fragments.FragmentInfoVerificentro;
 import com.hackdf.autochilango.fragments.FragmentSetPlate;
 
 import android.app.SearchManager;
@@ -148,6 +149,9 @@ public class MainActivity extends FragmentActivity {
         switch (position) {
 		case 1:
 			fragment  = new FragmentSetPlate();
+			break;
+		case 2: 
+			fragment= new FragmentInfoVerificentro();
 			break;
 
 		default:
