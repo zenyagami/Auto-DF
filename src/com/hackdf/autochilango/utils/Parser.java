@@ -54,6 +54,8 @@ public class Parser {
 					ver.setVin(obj.getString("vin"));
 					ver.setBrand(obj.getString("marca"));
 					ver.setSubBrand(obj.getString("submarca"));
+					ver.setAnio(obj.getString("modelo"));
+					ver.setCombustible(obj.getString("combustible"));
 					ver.setCertificate(obj.getString("certificado"));
 					ver.setCanceled(!obj.getString("cancelado").equals("NO"));
 					ver.setValidity(obj.getString("vigencia"));

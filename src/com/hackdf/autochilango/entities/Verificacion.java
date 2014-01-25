@@ -13,6 +13,20 @@ public class Verificacion {
 	private String verificationTime;
 	private String result;
 	private String rejectCause;
+	private String combustible;
+	private String anio;
+	public String getAnio() {
+		return anio;
+	}
+	public void setAnio(String anio) {
+		this.anio = anio;
+	}
+	public String getCombustible() {
+		return combustible;
+	}
+	public void setCombustible(String combustible) {
+		this.combustible = combustible;
+	}
 	public String getVin() {
 		return vin;
 	}
