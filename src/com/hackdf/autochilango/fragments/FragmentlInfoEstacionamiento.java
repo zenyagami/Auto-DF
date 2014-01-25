@@ -51,10 +51,10 @@ public class FragmentlInfoEstacionamiento extends Fragment{
 			// mapa
 			FragmentManager fm = getActivity().getSupportFragmentManager();
 			SupportMapFragment fragment = (SupportMapFragment) fm
-					.findFragmentById(R.id.map);
+					.findFragmentById(R.id.map2);
 			if (fragment == null) {
 				fragment = SupportMapFragment.newInstance();
-				fm.beginTransaction().replace(R.id.map, fragment).commit();
+				fm.beginTransaction().replace(R.id.map2, fragment).commit();
 			}
 			dataSource= new DatasetsDataSource (main.getContext());
 			dataSource.open();
@@ -93,7 +93,7 @@ public class FragmentlInfoEstacionamiento extends Fragment{
 	public void onDestroyView() {
 		super.onDestroyView();
 
-		Fragment f = getFragmentManager().findFragmentById(R.id.map);
+		Fragment f = getFragmentManager().findFragmentById(R.id.map2);
 		if (f != null)
 			getFragmentManager().beginTransaction().remove(f).commit();
 	}
