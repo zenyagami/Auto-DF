@@ -12,11 +12,13 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.hackdf.autochilango.R;
 
 public class FragmentInfoVerificentro extends Fragment {
 	private GoogleMap gMap;
-
+	private Marker marcador = null;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -47,7 +49,21 @@ public class FragmentInfoVerificentro extends Fragment {
 			}
 
 			gMap = fragment.getMap();
+			gMap.getUiSettings().setZoomControlsEnabled(false);
+			gMap.getUiSettings().setCompassEnabled(true);
+			marcador = mapa
+					.addMarker(ponerMarcador(new LatLng(19.42761, -99.16795), "",
+							"", R.drawable.ic_launcher));
 		}
 		return main;
+	}
+
+	@Override
+	public void onDestroyView() {
+		super.onDestroyView();
+
+		Fragment f = getFragmentManager().findFragmentById(R.id.map);
+		if (f != null)
+			getFragmentManager().beginTransaction().remove(f).commit();
 	}
 }

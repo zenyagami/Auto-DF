@@ -16,8 +16,6 @@
 
 package com.hackdf.autochilango;
 
-import com.hackdf.autochilango.fragments.FragmentInfoVerificentro;
-import com.hackdf.autochilango.fragments.FragmentSetPlate;
 
 import android.app.SearchManager;
 import android.content.Intent;
@@ -37,6 +35,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.hackdf.autochilango.fragments.FragmentInfoVerificentro;
+import com.hackdf.autochilango.fragments.FragmentSetPlate;
 
 public class MainActivity extends FragmentActivity {
     private DrawerLayout mDrawerLayout;
@@ -150,9 +151,11 @@ public class MainActivity extends FragmentActivity {
 		case 1:
 			fragment  = new FragmentSetPlate();
 			break;
+
 		case 2: 
 			fragment= new FragmentInfoVerificentro();
 			break;
+
 
 		default:
 			fragment = new FragmentSetPlate();
