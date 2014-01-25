@@ -18,6 +18,7 @@ package com.hackdf.autochilango;
 
 import com.hackdf.autochilango.fragments.FragmentInfoPlaca;
 import com.hackdf.autochilango.fragments.FragmentSetPlate;
+import com.hackdf.autochilango.fragments.FragmentlInfoEstacionamiento;
 
 import android.app.SearchManager;
 import android.content.Intent;
@@ -161,6 +162,9 @@ public class MainActivity extends FragmentActivity {
 
 		case 3:
 			fragment = new FragmentInfoPlaca();
+			break;
+		case 4: 
+			fragment= new FragmentlInfoEstacionamiento();
 			break;
 		default:
 			fragment = new FragmentSetPlate();
