@@ -15,15 +15,15 @@
   -->
 
 <resources>
-        <string-array name="planets_array">
-        <item>Mercury</item>
-        <item>Venus</item>
-        <item>Earth</item>
-        <item>Mars</item>
-        <item>Jupiter</item>
-        <item>Saturn</item>
-        <item>Uranus</item>
-        <item>Neptune</item>
+        <string-array name="menu_array">
+        <item>Infor.Placa</item>
+        <item>Verif. Robo</item>
+        <item>Verificentros</item>
+        <item>Estacionamientos</item>
+        <item>Hoy no Circula</item>
+        <item>Calidad del Airer</item>
+        <item>Encuentra tus llaves</item>
+        
     </string-array>
     <string name="app_name">Auto Chilango</string>
     <string name="drawer_open">Open navigation drawer</string>
