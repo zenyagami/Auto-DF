@@ -16,7 +16,6 @@ public class Parser {
 		{
 			return null;
 		}
-		
 		Car carInfo = new Car();
 		try {
 			response = response.getJSONObject("consulta");

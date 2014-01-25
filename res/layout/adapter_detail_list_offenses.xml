@@ -2,48 +2,45 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="8dp"
+     android:background="@drawable/card_bg_play"
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/txtPlacaVigencia"
+        android:id="@+id/txtFolioOffense"
         style="@style/CardText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Placa: AAAA Vigencia:10/02/14" />
-
+        android:text="Folio" />
+    
     <TextView
-        android:id="@+id/SerieVerif"
+        android:id="@+id/txtDateOffense"
         style="@style/CardText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Serie: AAAA" />
-
+        android:text="Fecha" />
     <TextView
-        android:id="@+id/txtMarcaGasolina"
+        android:id="@+id/txtStatusOffense"
         style="@style/CardText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="VW Bora Gasolina" />
-
+        android:text="Estado" />
     <TextView
-        android:id="@+id/txtVerificentroInfo"
+        android:id="@+id/txtReasonOffense"
         style="@style/CardText"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:textColor="@color/holo_blue_dark"
         android:layout_height="wrap_content"
-        android:text="09099 Fecha: 20/02/12 4:30" />
-
-    <TextView
-        android:id="@+id/txtVerifiResultado"
+        android:text="Motivo" />
+      <TextView
+          android:layout_marginTop="8dp"
+        android:id="@+id/txtSancion"
         style="@style/CardText"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="fill_horizontal"
         android:layout_height="wrap_content"
-        android:text="Resultado:" />
-
-    <TextView
-        android:id="@+id/txtVerifiRechazado"
-        style="@style/CardText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Rechazado" />
+        android:textColor="@color/holo_red_dark"
+        android:text="Sancion" />
+    
 
 </LinearLayout>

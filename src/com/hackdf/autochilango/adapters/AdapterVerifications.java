@@ -19,7 +19,7 @@ public class AdapterVerifications extends ArrayAdapter<Verificacion>{
 	private String plates;
 	public AdapterVerifications(Context context,String plates,
 			ArrayList<Verificacion> objects) {
-		super(context, R.layout.adapter_detail_list, objects);
+		super(context, R.layout.adapter_detail_list_verification, objects);
 		this.context = context;
 		this.verifList = objects;
 		this.plates = plates;
@@ -34,7 +34,7 @@ public class AdapterVerifications extends ArrayAdapter<Verificacion>{
 	public View getView(int position, View convertView, ViewGroup parent) {
 		if(convertView==null)
 		{
-			convertView= ((LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.adapter_detail_list, null);
+			convertView= ((LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.adapter_detail_list_verification, null);
 		}
 		Verificacion verif = getItem(position);
 		TextView txtPlacaVigencia = (TextView)convertView.findViewById(R.id.txtPlacaVigencia);
