@@ -18,7 +18,7 @@ public class NetClient {
 		return new JSONObject(execute(String.format(PLATES_INFO, plates)));
 	}
 
-	public static JSONObject getPlatesInfo(String plates) throws JSONException,
+	public static JSONObject getVrificentroInfo(String plates) throws JSONException,
 			IOException {
 		return new JSONObject(execute(String.format(PLATES_INFO, plates)));
 	}
