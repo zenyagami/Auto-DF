@@ -17,7 +17,6 @@ public class Parser {
 			if(response.has("tenencias") && response.getJSONObject("tenencias").has("tieneadeudos"))
 			{
 				carInfo.setHasDebts(Integer.valueOf(response.getJSONObject("tenencias").getString("tieneadeudos")));
-				
 			}
 			
 			
