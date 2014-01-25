@@ -51,8 +51,7 @@ public class FragmentInfoVerificentro extends Fragment {
 		} else {
 			// mapa
 			FragmentManager fm = getActivity().getSupportFragmentManager();
-			SupportMapFragment fragment = (SupportMapFragment) fm
-					.findFragmentById(R.id.map);
+			SupportMapFragment fragment = (SupportMapFragment) fm.findFragmentById(R.id.map);
 			if (fragment == null) {
 				fragment = SupportMapFragment.newInstance();
 				fm.beginTransaction().replace(R.id.map, fragment).commit();
@@ -62,16 +61,19 @@ public class FragmentInfoVerificentro extends Fragment {
 
 			gMap = fragment.getMap();
 			gMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+		    gMap.setMyLocationEnabled(true);
+		    gMap.getUiSettings().setCompassEnabled(true);
 			gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(CoordenadaInicia, 20));
 			gMap.setMyLocationEnabled(true);
 			gMap.getUiSettings().setZoomControlsEnabled(false);
 			gMap.getUiSettings().setCompassEnabled(true);
+			LatLng ll= new LatLng(19.4435307,-99.1824155);
+			gMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ll, 16));
 			List<Verificentro> lista =dataSource.getVeris();
 			for(Verificentro verificentro: lista)
 			{
-				marcador = gMap
-						.addMarker(ponerMarcador(new LatLng(verificentro.getLat(),verificentro.getLng()),"",
-									"", R.drawable.ic_launcher));
+				marcador = gMap.addMarker(ponerMarcador(new LatLng(verificentro.getLat(),verificentro.getLng()),verificentro.getRs(),
+									verificentro.getDir()+"\n"+verificentro.getDir(), R.drawable.ic_launcher));
 				Log.i("latLong:", (""+ verificentro));
 			}
 		
