@@ -15,8 +15,7 @@
   -->
 
 <resources>
-    <string name="app_name">Navigation Drawer Example</string>
-    <string-array name="planets_array">
+        <string-array name="planets_array">
         <item>Mercury</item>
         <item>Venus</item>
         <item>Earth</item>
@@ -26,6 +25,7 @@
         <item>Uranus</item>
         <item>Neptune</item>
     </string-array>
+    <string name="app_name">Auto Chilango</string>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="action_websearch">Web search</string>
