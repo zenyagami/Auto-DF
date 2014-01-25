@@ -100,4 +100,8 @@ public class FragmentInfoVerificentro extends Fragment {
 		if (f != null)
 			getFragmentManager().beginTransaction().remove(f).commit();
 	}
+	public void conectar(View view)
+	{
+		
+	}
 }

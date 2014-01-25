@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp"
+     android:background="@drawable/card_bg_play"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/txtFolioOffense"
+        style="@style/CardText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Folio" />
+    
+    <TextView
+        android:id="@+id/txtDateOffense"
+        style="@style/CardText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fecha" />
+    <TextView
+        android:id="@+id/txtStatusOffense"
+        style="@style/CardText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Estado" />
+    <TextView
+        android:id="@+id/txtReasonOffense"
+        style="@style/CardText"
+        android:layout_width="match_parent"
+        android:textColor="@color/holo_blue_dark"
+        android:layout_height="wrap_content"
+        android:text="Motivo" />
+      <TextView
+          android:layout_marginTop="8dp"
+        android:id="@+id/txtSancion"
+        style="@style/CardText"
+        android:layout_width="match_parent"
+        android:gravity="fill_horizontal"
+        android:layout_height="wrap_content"
+        android:textColor="@color/holo_red_dark"
+        android:text="Sancion" />
+    
+
+</LinearLayout>

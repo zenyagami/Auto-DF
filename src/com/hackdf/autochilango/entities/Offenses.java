@@ -4,6 +4,13 @@ public class Offenses {
 	private String folio;
 	private String dateTime;
 	private String situation;
+	private String fundamento;
+	public String getFundamento() {
+		return fundamento;
+	}
+	public void setFundamento(String fundamento) {
+		this.fundamento = fundamento;
+	}
 	private String reason;
 	private String base;
 	private String sanction;

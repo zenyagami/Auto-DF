@@ -12,7 +12,7 @@ import org.json.JSONObject;
 
 public class NetClient {
 	private static final String PLATES_INFO = "http://dev.datos.labplc.mx/movilidad/vehiculos/%s.json";
-
+	private static final String ENVIROMENT_INFO="http://datos.labplc.mx/aire.json";
 	public static JSONObject getPlatesInfo(String plates) throws JSONException,
 			IOException {
 		return new JSONObject(execute(String.format(PLATES_INFO, plates)));
@@ -22,6 +22,10 @@ public class NetClient {
 			IOException {
 		return new JSONObject(execute(String.format(PLATES_INFO, plates)));
 	}
+	public static JSONObject getAireInfo() throws JSONException,
+	IOException {
+return new JSONObject(execute(ENVIROMENT_INFO));
+}
 
 	private static String execute(String nombreurl) throws IOException {
 		String data = "";

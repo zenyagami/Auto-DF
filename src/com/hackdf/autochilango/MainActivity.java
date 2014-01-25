@@ -16,11 +16,11 @@
 
 package com.hackdf.autochilango;
 
+import com.hackdf.autochilango.fragments.FragmentInfoAire;
 import com.hackdf.autochilango.fragments.FragmentInfoPlaca;
 import com.hackdf.autochilango.fragments.FragmentSetPlate;
 import com.hackdf.autochilango.fragments.FragmentlInfoEstacionamiento;
 
-import android.app.SearchManager;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -37,16 +37,26 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
+import com.hackdf.autochilango.fragments.FragmentInfoNoCircula;
 import com.hackdf.autochilango.fragments.FragmentInfoVerificentro;
-import com.hackdf.autochilango.fragments.FragmentSetPlate;
+
+import com.hackdf.autochilango.preferences.AppPreferences;
+
 
 public class MainActivity extends FragmentActivity {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
-
+    private static final int NAVIGATION_INFO_PLACA=0;
+    private static final int NAVIGATION_ROBO=1;
+    private static final int NAVIGATION_VERIFICENTRO=2;
+    private static final int NAVIGATION_ESTACIONAMIENTO=3;
+    private static final int NAVIGATION_HOY_NO_CIRCULA=4;
+    private static final int NAVIGATION_CALIDAD_AIRE=5;
+    private static final int NAVIGATION_ENCUENTRA_LLAVES=6;
+    
+    
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
     private String[] mPlanetTitles;
@@ -54,10 +64,20 @@ public class MainActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(AppPreferences.getCurrentPlate(getApplicationContext()).equals(""))
+        {
+        	//si no tiene placa mandamos a "verificar" su placa
+        	//Actividad de verificar placa :)
+        	startActivity(new Intent(getApplicationContext(), ActivitySetPlate.class));
+        	finish();
+        	return;
+        }
+        
+        
         setContentView(R.layout.activity_main);
 
         mTitle = mDrawerTitle = getTitle();
-        mPlanetTitles = getResources().getStringArray(R.array.planets_array);
+        mPlanetTitles = getResources().getStringArray(R.array.menu_array);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
@@ -123,17 +143,6 @@ public class MainActivity extends FragmentActivity {
         }
         // Handle action buttons
         switch(item.getItemId()) {
-        case R.id.action_websearch:
-            // create intent to perform web search for this planet
-            Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
-            intent.putExtra(SearchManager.QUERY, getActionBar().getTitle());
-            // catch event that there's no activity to handle intent
-            if (intent.resolveActivity(getPackageManager()) != null) {
-                startActivity(intent);
-            } else {
-                Toast.makeText(this, R.string.app_not_available, Toast.LENGTH_LONG).show();
-            }
-            return true;
         default:
             return super.onOptionsItemSelected(item);
         }
@@ -150,21 +159,28 @@ public class MainActivity extends FragmentActivity {
     private void selectItem(int position) {
         // update the main content by replacing fragments
         Fragment fragment = null;
+        
         switch (position) {
-		case 1:
-			fragment  = new FragmentSetPlate();
+		case NAVIGATION_INFO_PLACA:
+			fragment  = new FragmentInfoPlaca();
 			break;
-
-		case 2: 
-			fragment= new FragmentInfoVerificentro();
-			break;
-
-
-		case 3:
+		case NAVIGATION_ROBO: 
 			fragment = new FragmentInfoPlaca();
 			break;
-		case 4: 
+		case NAVIGATION_VERIFICENTRO:
+			fragment= new FragmentInfoVerificentro();
+			break;
+		case NAVIGATION_ESTACIONAMIENTO: 
 			fragment= new FragmentlInfoEstacionamiento();
+			break;
+		case NAVIGATION_HOY_NO_CIRCULA:
+			fragment= new FragmentInfoNoCircula();
+			break;
+		case NAVIGATION_ENCUENTRA_LLAVES: 
+			fragment  = new FragmentSetPlate();
+			break;
+		case NAVIGATION_CALIDAD_AIRE:
+			fragment= new FragmentInfoAire();
 			break;
 		default:
 			fragment = new FragmentSetPlate();

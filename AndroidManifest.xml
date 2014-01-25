@@ -19,7 +19,6 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
-
     <uses-sdk
         android:minSdkVersion="15"
         android:targetSdkVersion="19" />
@@ -27,6 +26,8 @@
     <permission
         android:name="com.hackdf.autochilango.MAPS_RECEIVE"
         android:protectionLevel="signature" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />    
 
     <uses-permission android:name="com.hackdf.autochilango.permission.MAPS_RECEIVE" />
 
@@ -42,10 +43,17 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
+        android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@android:style/Theme.Holo.Light.DarkActionBar" >
+<<<<<<< HEAD
         
+=======
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+>>>>>>> 26e65e3ae417960fb819c7efecdab4a799317074
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyB6Rr6enL0v6p1v8M0Qyd9DpKtdOiyuL3A" />
@@ -59,6 +67,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ActivitySetPlate"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar" />
+        <activity
+            android:name=".ActivityDetailList"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar" />
     </application>
 
 </manifest>

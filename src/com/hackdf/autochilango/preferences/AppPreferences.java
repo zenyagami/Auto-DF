@@ -18,5 +18,18 @@ public class AppPreferences {
 		ed.putString("pref_current_car", plates);
 		ed.commit();
 	}
+	public static String getJsonCurrentPlate(Context context)
+	{
+		SharedPreferences sp = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+		return sp.getString("pref_current_car_json", "");
+	}
+	public static void setJsonCurrentPlate(Context context,String plates)
+	{
+		SharedPreferences sp = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+		Editor ed =sp.edit();
+		ed.putString("pref_current_car_json", plates);
+		ed.commit();
+	}
+	
 
 }

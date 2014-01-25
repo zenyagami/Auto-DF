@@ -16,9 +16,21 @@ public class Parser {
 		{
 			return null;
 		}
+<<<<<<< HEAD
+<<<<<<< HEAD
+		Car carInfo = new Car();
+		try {
+=======
+=======
+>>>>>>> 27ffbbee2694ed820763983d255da2ebf9d51f48
+		
 		Car carInfo = new Car();
 		try {
 			response = response.getJSONObject("consulta");
+<<<<<<< HEAD
+>>>>>>> 27ffbbee2694ed820763983d255da2ebf9d51f48
+=======
+>>>>>>> 27ffbbee2694ed820763983d255da2ebf9d51f48
 			carInfo.setPlates(response.getString("placa"));
 			if(response.has("tenencias") && response.getJSONObject("tenencias").has("tieneadeudos"))
 			{
@@ -44,7 +56,14 @@ public class Parser {
 					}
 					
 				}
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 				carInfo.setOffenseList(offenseList);
+>>>>>>> 27ffbbee2694ed820763983d255da2ebf9d51f48
+=======
+				carInfo.setOffenseList(offenseList);
+>>>>>>> 27ffbbee2694ed820763983d255da2ebf9d51f48
 			}
 			if(response.has("verificaciones"))
 			{
@@ -69,8 +88,16 @@ public class Parser {
 					verifList.add(ver);
 				}
 				
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 				carInfo.setVerificationList(verifList);
 				
+>>>>>>> 27ffbbee2694ed820763983d255da2ebf9d51f48
+=======
+				carInfo.setVerificationList(verifList);
+				
+>>>>>>> 27ffbbee2694ed820763983d255da2ebf9d51f48
 			}
 			
 			
