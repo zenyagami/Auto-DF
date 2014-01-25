@@ -22,6 +22,7 @@ public class ActivityDetailList extends FragmentActivity {
 		} else {
 			fragment = new FragmentVerificationList();
 		}
+		
 		FragmentManager fragmentManager = getSupportFragmentManager();
 		fragmentManager.beginTransaction()
 				.replace(R.id.content_frame, fragment).commit();
