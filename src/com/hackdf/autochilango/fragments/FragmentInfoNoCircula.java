@@ -21,14 +21,14 @@ public class FragmentInfoNoCircula extends Fragment {
 		View v =inflater.inflate(R.layout.fragment_info_no_circula, null);
 	
 		circula=(TextView)getActivity().findViewById(R.id.textViewCirculacion);
-		
-		
+		circulacion();
 		return v;
 	}	
 	
 public void circulacion() {
 	String ter,v="";
 	String placa= AppPreferences.getCurrentPlate(this.getActivity());
+	placa="542WAD";
 Calendar c = new GregorianCalendar();
     String dia;
 	dia = Integer.toString(c.get(Calendar.DATE));
