@@ -42,7 +42,11 @@ public class FragmentSetPlate extends Fragment implements OnClickListener {
 		((Button) v.findViewById(R.id.btnAcceptPlate)).setOnClickListener(this);
 		((Button) v.findViewById(R.id.btnCanelPlate)).setOnClickListener(this);
 		etPlates = (EditText) v.findViewById(R.id.etPlates);
-		stoledFragment = getArguments().getBoolean("stolen");
+		if(getArguments()!=null && getArguments().getBoolean("stolen"))
+		{
+			stoledFragment = getArguments().getBoolean("stolen");
+		}
+		
 		return v;
 	}
 
