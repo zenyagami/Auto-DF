@@ -13,9 +13,7 @@ import android.widget.Toast;
 
 import com.hackdf.autochilango.R;
 import com.hackdf.autochilango.entities.Aire;
-import com.hackdf.autochilango.entities.Car;
 import com.hackdf.autochilango.preferences.AppPreferences;
-import com.hackdf.autochilango.utils.Parser;
 import com.hackdf.autochilango.utils.ParserAmbiente;
 
 public class FragmentInfoAire extends Fragment{

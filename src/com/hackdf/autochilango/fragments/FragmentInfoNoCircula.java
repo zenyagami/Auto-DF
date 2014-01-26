@@ -19,14 +19,13 @@ public class FragmentInfoNoCircula extends Fragment {
 	private TextView causas;
 	private TextView placatxt;
 	private TextView lblColor;
-	private TextView placengo;
-	
+	private static final String NO_CIRCULA ="No Circula";
+	private static final String SI_CIRCULA ="Si Circula";
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View v =inflater.inflate(R.layout.fragment_info_no_circula, null);
 	
-		placengo=(TextView)v.findViewById(R.id.textViewPlacaEngomado);
 		causas=(TextView)v.findViewById(R.id.textViewCausas);
 		placatxt=(TextView)v.findViewById(R.id.textPlaca);
 		lblColor=(TextView)v.findViewById(R.id.textColor);
@@ -62,11 +61,12 @@ int dia;
 		lblColor.setBackgroundColor(Color.rgb(255,255,0));
 		
 		if(dia==Calendar.MONDAY){
-			v="no circula";	
+			v=NO_CIRCULA;	
 				
 		}else{
 			
-			v="si circula"; diasNoCirulacion=" su matricula no circula los dias Lunes y el primer Sabado de cada mes";
+			v=NO_CIRCULA;
+			diasNoCirulacion="Su matrícula no circula los dias Lunes y el primer Sabado de cada mes";
 			
 		}
 		break;
@@ -75,10 +75,11 @@ int dia;
 		lblColor.setBackgroundColor(Color.rgb(255,192,203));
 		
 		if(dia==Calendar.TUESDAY){
-			v="no circula";	
+			v=SI_CIRCULA;	
 				
 		}else{
-			v="si circula"; diasNoCirulacion=" su matricula no circula los dias Martes y el segundo Sabado de cada mes";
+			v=NO_CIRCULA; 
+			diasNoCirulacion="Su matrícula no circula los dias Martes y el segundo Sabado de cada mes";
 			
 		}
 		break;
@@ -87,10 +88,11 @@ int dia;
 		lblColor.setBackgroundColor(Color.rgb(255,0,0));
 		
 		if(dia==Calendar.WEDNESDAY){
-			v="no circula";	
+			v=NO_CIRCULA;	
 				
 		}else{
-			v="si circula"; diasNoCirulacion=" su matricula no circula los dias Miercoles y el tercer Sabado de cada mes";
+			v=SI_CIRCULA;
+			diasNoCirulacion="Su matrícula no circula los dias Miercoles y el tercer Sabado de cada mes";
 			
 		}
 		break;
@@ -99,10 +101,11 @@ int dia;
 		lblColor.setBackgroundColor(Color.rgb(34,139,34));
 		
 		if(dia==Calendar.THURSDAY){
-			v="no circula";	
+			v=NO_CIRCULA;	
 				
 		}else{
-			v="si circula"; diasNoCirulacion=" su matricula no circula los dias Jueves y el cuarto Sabado de cada mes";
+			v=SI_CIRCULA; 
+			diasNoCirulacion="Su matrícula no circula los dias Jueves y el cuarto Sabado de cada mes";
 			
 		}
 		break;
@@ -111,21 +114,26 @@ int dia;
 		lblColor.setBackgroundColor(Color.rgb(30,144,255));
 		
 		if(dia==Calendar.FRIDAY){
-			v="no circula";	
+			v=NO_CIRCULA;	
 				
 		}else{
-			v="si circula"; diasNoCirulacion=" su matricula no circula los dias Viernes y el quinto Sabado de cada mes";
+			v=SI_CIRCULA; 
+			diasNoCirulacion="Su matrícula no circula los dias Viernes y el quinto Sabado de cada mes";
 			
 		}
 		break;
 		default:
 
-			v="si circula"; diasNoCirulacion=" su matricula no circula los dias ";
+			v=SI_CIRCULA;
+			diasNoCirulacion="Su matrícula no circula los dias ";
 		break;
 	}
-	placengo.setText("Engomado y PLaca:");
 	placatxt.setText(placa);
-	circula.setText(" el dia de hoy: "+v);
+	circula.setText("Tu Auto "+v + " el día de Hoy");
+	if(v.equals(NO_CIRCULA))
+	{
+		circula.setTextColor(getResources().getColor(R.color.holo_red_dark));
+	}
 	causas.setText(diasNoCirulacion);
 	
 	

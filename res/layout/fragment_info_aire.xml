@@ -6,8 +6,7 @@
     android:orientation="vertical"
     android:padding="8dp" >
 
-    <include layout="@layout/weather_panel"/>
-    
+    <include layout="@layout/weather_panel" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,25 +14,16 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/card_bg_play"
         android:orientation="vertical"
-        android:padding="8dp" >
+        android:padding="12dp" >
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/textView1"
+            style="@style/CardTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="10dp"
-            android:orientation="horizontal" >
-            <TextView android:layout_weight="0.2" android:id="@+id/cataire" style="@style/CardText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="9dp" android:text=""/>
-
-            <TextView
-                android:id="@+id/textView1"
-                style="@style/CardTitle"
-                android:textColor="@color/holo_blue_dark"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.2"
-                android:text="Clima" />
-        </LinearLayout>
+            android:layout_marginTop="8dp"
+            android:text="Clima"
+            android:textColor="@color/holo_blue_dark" />
 
         <TextView
             android:id="@+id/cataire"
@@ -41,15 +31,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="9dp"
-            android:text=" Categoria del aire: regular" />
-        
+            android:text="La categoria del aire es regular"
+            android:textColor="@color/holo_green_light" />
+
         <TextView
             android:id="@+id/recoaire"
             style="@style/CardText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="9dp"
-            android:text="Recomendaciones de Aire: POSIBLES MOLESTIAS EN NIÑOS, ADULTOS MAYORES Y PERSONAS CON ENFERMEDADES" />
+            android:text="Recomendaciones de Aire:\nPOSIBLES MOLESTIAS EN NIÑOS, ADULTOS MAYORES Y PERSONAS CON ENFERMEDADES" />
 
         <TextView
             android:id="@+id/temperatura"
@@ -57,7 +48,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="9dp"
-            android:text="Temperatura: 15" />
+            android:text="Temperatura: 19°C"
+            android:textColor="@color/holo_orange_light" />
 
         <TextView
             android:id="@+id/condicion"
@@ -73,17 +65,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="9dp"
-            android:text="Indice de UV:15 " />
-        
+            android:text="Indice de UV:15 "
+            android:textColor="@color/holo_red_light" />
+
         <TextView
             android:id="@+id/recouv"
             style="@style/CardText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="9dp"
-            android:text="Recomendacion de UV: NO NECESITA PROTECCIÓN" />
-
-        
+            android:text="Recomendacion de UV:\nNO NECESITA PROTECCIÓN" />
     </LinearLayout>
 
 </LinearLayout>
