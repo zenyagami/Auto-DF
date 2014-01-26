@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="8dp"
+    android:padding="10dp"
      android:background="@drawable/card_bg_play"
     android:orientation="vertical" >
 
@@ -11,6 +11,7 @@
         style="@style/CardText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/fg_primary"
         android:text="Placa: AAAA Vigencia:10/02/14" />
 
     <TextView
@@ -39,11 +40,13 @@
         style="@style/CardText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/holo_blue_dark"
         android:text="Resultado:" />
 
     <TextView
         android:id="@+id/txtVerifiRechazado"
         style="@style/CardText"
+        android:textColor="@color/holo_red_dark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Rechazado" />

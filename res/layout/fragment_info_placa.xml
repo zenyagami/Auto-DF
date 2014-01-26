@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/window_theme"
-    android:orientation="vertical"
     android:padding="8dp" >
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
 
     <TextView
         android:id="@+id/txtDetailTitle"
@@ -49,27 +53,27 @@
         </LinearLayout>
 
         <TextView
-            style="@style/CardText"
             android:id="@+id/txtModeloCarro"
+            style="@style/CardText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Modelo: Bora 2.5 VW" />
 
         <TextView
+            android:id="@+id/txtLastVerification"
             style="@style/CardText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:id="@+id/txtLastVerification"
             android:text="Última verificación: 2009-05-01" />
 
         <TextView
+            android:id="@+id/txtVerificationResult"
             style="@style/CardText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:id="@+id/txtVerificationResult"
             android:text="Resultado: Cero" />
 
         <View
@@ -124,19 +128,19 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/txtLastOffense"
             style="@style/CardText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:id="@+id/txtLastOffense"
             android:text="Última Infracción: 2009-05-01" />
 
         <TextView
+            android:id="@+id/txtOffenseStatus"
             style="@style/CardText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:id="@+id/txtOffenseStatus"
             android:text="Estado: Pagada" />
 
         <View
@@ -155,22 +159,23 @@
             android:text="Detalles"
             android:textColor="@color/holo_blue_dark" />
     </LinearLayout>
-<!-- ROBO -->
-<LinearLayout
+    <!-- ROBO -->
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="@drawable/card_bg_play"
         android:orientation="vertical"
-        android:visibility="gone"
-        android:padding="8dp" >
+        android:padding="8dp"
+        android:visibility="gone" >
 
         <LinearLayout
+            android:id="@+id/lyRobo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="10dp"
-            android:id="@+id/lyRobo"
             android:orientation="horizontal" >
 
             <TextView
@@ -186,23 +191,17 @@
                 android:layout_height="match_parent"
                 android:layout_marginRight="8dp"
                 android:layout_weight="0.9"
-                android:gravity="right|center_vertical"
-                />
+                android:gravity="right|center_vertical" />
         </LinearLayout>
 
         <TextView
+            android:id="@+id/txtInfoRobo"
             style="@style/CardText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:id="@+id/txtInfoRobo"
             android:text="Reporte de ROBO!!!" />
-
-       
     </LinearLayout>
-    
-    
-    
-    
-    
+
 </LinearLayout>
+</ScrollView>
