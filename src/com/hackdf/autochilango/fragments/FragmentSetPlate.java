@@ -10,6 +10,7 @@ import com.hackdf.autochilango.R;
 import com.hackdf.autochilango.api.NetClient;
 import com.hackdf.autochilango.preferences.AppPreferences;
 import com.hackdf.autochilango.utils.Dialogs;
+import com.hackdf.autochilango.utils.Utils;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -21,6 +22,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class FragmentSetPlate extends Fragment implements OnClickListener {
@@ -44,9 +46,9 @@ public class FragmentSetPlate extends Fragment implements OnClickListener {
 		etPlates = (EditText) v.findViewById(R.id.etPlates);
 		if(getArguments()!=null && getArguments().getBoolean("stolen"))
 		{
+			((TextView)v.findViewById(R.id.txtTitleSetCurrentPlate)).setText("Consultar Placa por Robo");
 			stoledFragment = getArguments().getBoolean("stolen");
 		}
-		
 		return v;
 	}
 
@@ -57,11 +59,15 @@ public class FragmentSetPlate extends Fragment implements OnClickListener {
 
 			break;
 		case R.id.btnAcceptPlate:
+			if(!Utils.isOnline(getActivity()))
+			{
+				Toast.makeText(getActivity(), "No se tiene acceso a Internet :(", Toast.LENGTH_SHORT).show();
+				return;
+			}
 			// manda a llamar API que obtiene la info de la placa :)
 			if (getPlateInfo == null) {
 				getPlateInfo = new GetPlateInfo();
 				getPlateInfo.execute("");
-
 			}
 			break;
 		default:

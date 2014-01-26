@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import com.hackdf.autochilango.R;
 import com.hackdf.autochilango.entities.Offenses;
-import com.hackdf.autochilango.entities.Verificacion;
+import com.hackdf.autochilango.utils.Utils;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -45,7 +45,8 @@ public class AdapterOffenses extends ArrayAdapter<Offenses>{
 		folio.setText(String.format("Folio: %s", verif.getFolio()));
 		date.setText(String.format("Fecha: %s", verif.getDateTime()));
 		status.setText(String.format("Situación: %s",verif.getSituation()));
-		reason.setText(String.format("Razon:%s Fundamento:%s", verif.getReason(),verif.getBase()));
+		reason.setText(String.format("Razon:%s Fundamento:%s", Utils.convertToUTF8( verif.getReason()),
+				Utils.convertToUTF8(verif.getBase())));
 		sancion.setText(String.format("Sancion: %s", verif.getSanction()));
 		return convertView;
 	}
