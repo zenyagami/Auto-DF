@@ -24,6 +24,7 @@ import com.hackdf.autochilango.R;
 import com.hackdf.autochilango.db.DatasetsDataSource;
 import com.hackdf.autochilango.db.Estacionamiento;
 import com.hackdf.autochilango.db.Verificentro;
+
 public class FragmentlInfoEstacionamiento extends Fragment{
 	private GoogleMap gMap;
 	private DatasetsDataSource dataSource;

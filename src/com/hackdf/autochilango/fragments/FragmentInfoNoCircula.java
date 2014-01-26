@@ -3,6 +3,7 @@ package com.hackdf.autochilango.fragments;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -16,6 +17,9 @@ import com.hackdf.autochilango.preferences.AppPreferences;
 public class FragmentInfoNoCircula extends Fragment {
 	private TextView circula;
 	private TextView causas;
+	private TextView placatxt;
+	private TextView lblColor;
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -23,6 +27,8 @@ public class FragmentInfoNoCircula extends Fragment {
 	
 		circula=(TextView)v.findViewById(R.id.textViewCirculacion);
 		causas=(TextView)v.findViewById(R.id.textViewCausas);
+		placatxt=(TextView)v.findViewById(R.id.textPlaca);
+		lblColor=(TextView)v.findViewById(R.id.textColor);
 		circulacion();
 		return v;
 	}	
@@ -46,8 +52,13 @@ int dia;
 		numero=Integer.parseInt(placa.substring(placa.length()-2,placa.length()-1));
 	}
 	
+	//engomado, 
+	
 	switch(numero){
 	case 5: case 6:
+		
+		lblColor.setBackgroundColor(Color.rgb(255,255,0));
+		
 		if(dia==Calendar.MONDAY){
 			v="no circula";	
 				
@@ -58,6 +69,9 @@ int dia;
 		}
 		break;
 	case 7: case 8:
+		
+		lblColor.setBackgroundColor(Color.rgb(255,192,203));
+		
 		if(dia==Calendar.TUESDAY){
 			v="no circula";	
 				
@@ -67,6 +81,9 @@ int dia;
 		}
 		break;
 	case 3: case 4:
+		
+		lblColor.setBackgroundColor(Color.rgb(255,0,0));
+		
 		if(dia==Calendar.WEDNESDAY){
 			v="no circula";	
 				
@@ -76,6 +93,9 @@ int dia;
 		}
 		break;
 	case 1: case 2:
+		
+		lblColor.setBackgroundColor(Color.rgb(34,139,34));
+		
 		if(dia==Calendar.THURSDAY){
 			v="no circula";	
 				
@@ -85,6 +105,9 @@ int dia;
 		}
 		break;
 	case 0: case 9:
+		
+		lblColor.setBackgroundColor(Color.rgb(30,144,255));
+		
 		if(dia==Calendar.FRIDAY){
 			v="no circula";	
 				
@@ -98,7 +121,8 @@ int dia;
 			v="si circula"; diasNoCirulacion=" su matricula no circula los dias ";
 		break;
 	}
-	circula.setText("Placa numero "+placa+" el dia de hoy: "+v);
+	circula.setText("Placa numero:"+" el dia de hoy: "+v);
+	placatxt.setText(placa);
 	causas.setText(diasNoCirulacion);
 	
 	

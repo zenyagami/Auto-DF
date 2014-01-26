@@ -6,17 +6,15 @@
     android:orientation="vertical"
     android:padding="8dp" >
 
-    <TextView
-        android:id="@+id/textViewInfoAire"
-        style="@style/CardTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="Información" />
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="match_parent"
+        android:layout_height="123dp"
+        android:src="@drawable/mercury" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginTop="8dp"
         android:background="@drawable/card_bg_play"
         android:orientation="vertical"
@@ -28,133 +26,67 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="10dp"
             android:orientation="horizontal" >
-
-            <TextView
-                android:id="@+id/textViewInfracciones"
-                style="@style/CardTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.2"
-                android:text="Calidad del Ambiente" />
-
-            <TextView
-                android:id="@+id/txtCalidad"
-                style="@style/CardText"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginRight="8dp"
-                android:layout_weight="0.9"
-                android:gravity="right|center_vertical"
-                android:text="2"
-                android:textColor="@color/holo_red_dark" />
-        </LinearLayout>
-
-        <TextView
-            style="@style/CardText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-           
-            android:text="Categoriq: mala" />
-
-        <TextView
-            style="@style/CardText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="temperatura: 19" />
-
-        <TextView
-            style="@style/CardText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="condicion: nublado_noche" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="1dp"
-            android:background="?android:attr/dividerHorizontal" />
-
-        <TextView
-            android:id="@+id/txtDetailOffenses"
-            android:layout_width="match_parent"
-            android:layout_height="38dp"
-            android:background="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:gravity="center_vertical"
-            android:text="Detalles"
-            android:textColor="@color/holo_blue_dark" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/card_bg_play"
-        android:orientation="vertical"
-        android:padding="8dp" >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="10dp"
-            android:orientation="horizontal" >
+            <TextView android:layout_weight="0.2" android:id="@+id/cataire" style="@style/CardText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="9dp" android:text=""/>
 
             <TextView
                 android:id="@+id/textView1"
                 style="@style/CardTitle"
+                android:textColor="@color/holo_blue_dark"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.2"
-                android:text="Zonas" />
-
-            
+                android:text="Clima" />
         </LinearLayout>
 
         <TextView
+            android:id="@+id/cataire"
             style="@style/CardText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text=" noreste: mala" />
+            android:layout_marginTop="9dp"
+            android:text=" Categoria del aire: regular" />
+        
+        <TextView
+            android:id="@+id/recoaire"
+            style="@style/CardText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:text="Recomendaciones de Aire: POSIBLES MOLESTIAS EN NIÑOS, ADULTOS MAYORES Y PERSONAS CON ENFERMEDADES" />
 
         <TextView
+            android:id="@+id/temperatura"
             style="@style/CardText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="centro: regular" />
-         <TextView
-            style="@style/CardText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="suroeste: regular" />
-          <TextView
-            style="@style/CardText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="sureste: regular" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="3dp"
-            android:background="?android:attr/dividerHorizontal" />
+            android:layout_marginTop="9dp"
+            android:text="Temperatura: 15" />
 
         <TextView
-            android:id="@+id/txtDetailVerification"
-            android:layout_width="match_parent"
-            android:layout_height="38dp"
-            android:background="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:gravity="center_vertical"
-            android:text="Detalles"
-            android:textColor="@color/holo_blue_dark" />
+            android:id="@+id/condicion"
+            style="@style/CardText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:text="Condicion: medio_nublado" />
+
+        <TextView
+            android:id="@+id/uv"
+            style="@style/CardText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:text="Indice de UV:15 " />
+        
+        <TextView
+            android:id="@+id/recouv"
+            style="@style/CardText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:text="Recomendacion de UV: NO NECESITA PROTECCIÓN" />
+
+        
     </LinearLayout>
 
 </LinearLayout>

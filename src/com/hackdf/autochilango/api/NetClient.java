@@ -9,7 +9,6 @@ import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -36,7 +35,6 @@ import org.json.JSONObject;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.webkit.CookieManager;
 
 public class NetClient {
 	private static final String PLATES_INFO = "http://dev.datos.labplc.mx/movilidad/vehiculos/%s.json";
