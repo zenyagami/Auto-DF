@@ -76,7 +76,7 @@ public class FragmentlInfoEstacionamiento extends Fragment{
 			{
 				gMap
 						.addMarker(ponerMarcador(new LatLng(estacionamiento.getLng(),estacionamiento.getLat()),
-								"Lugares Disponibles:",""+estacionamiento.getCajones(), R.drawable.ic_launcher));
+								"Lugares Disponibles:",""+estacionamiento.getCajones(), R.drawable.logoestaciona));
 				Log.i("latLong:", (""+ estacionamiento.getLat() + "," + estacionamiento.getLng()));
 				
 				
@@ -94,7 +94,7 @@ public class FragmentlInfoEstacionamiento extends Fragment{
 		{
 			 gMap
 					.addMarker(ponerMarcador(new LatLng(estacionamiento.getLat(),estacionamiento.getLng()),"",
-								"", R.drawable.ic_launcher));
+								"", R.drawable.logoestaciona));
 			Log.i("latLong:", (""+ estacionamiento.getLat() + "," + estacionamiento.getLng()));
 			
 		}
@@ -108,7 +108,7 @@ public class FragmentlInfoEstacionamiento extends Fragment{
 		{
 			 gMap
 					.addMarker(ponerMarcador(new LatLng(verificentro.getLat(),verificentro.getLng()),"",
-								"", R.drawable.ic_launcher));
+								"", R.drawable.logovere));
 			Log.i("latLong:", (""+ verificentro.getLat() + "," + verificentro.getLng()));
 			
 		}

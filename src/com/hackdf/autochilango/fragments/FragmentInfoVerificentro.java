@@ -105,7 +105,7 @@ public class FragmentInfoVerificentro extends Fragment {
 			gMap.addMarker(ponerMarcador(
 					new LatLng(verificentro.getLat(), verificentro.getLng()),
 					verificentro.getRs(), verificentro.getDir() + "\n"
-							+ verificentro.getDir(), R.drawable.ic_launcher));
+							+ verificentro.getDir(), R.drawable.logovere));
 			Log.i("latLong:", ("" + verificentro));
 		}
 
