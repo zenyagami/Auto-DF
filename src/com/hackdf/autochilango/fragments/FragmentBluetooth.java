@@ -6,15 +6,12 @@ import java.io.OutputStream;
 import java.util.Set;
 import java.util.UUID;
 
-import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -23,14 +20,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
-import com.google.android.gms.ads.a;
-import com.google.android.gms.appstate.b;
 import com.hackdf.autochilango.R;
 
 public class FragmentBluetooth extends Fragment implements android.view.View.OnClickListener{
 
-	private Button btn;
 	BluetoothAdapter mBluetoothAdapter;
 	BluetoothSocket mmSocket;
 	BluetoothDevice mmDevice;
@@ -50,37 +45,34 @@ public class FragmentBluetooth extends Fragment implements android.view.View.OnC
 		// TODO Auto-generated method stub
 		View main = inflater.inflate(R.layout.fragment_llaves, null);
 		context = main.getContext();
-		try {
-			findBT();
-			openBT();
-		} catch (IOException ex) {
-		}
-
-//		Builder builder=new Builder(context);
-//		builder.setMessage("Desea encontrar sus laves?");
-//		builder.setPositiveButton("On", new OnClickListener() {
-//			
-//			@Override
-//			public void onClick(DialogInterface dialog, int which) {
-//				
-//					// TODO Auto-generated method stub
-//					try {
-//						sendData();
-//					} catch (IOException e) {
-//						Log.i("Error bluetooth ",e.getMessage());
-//					}
-//					Log.i("","entra al boton");
-//				}
-//	
-//			
-//		});
-//		builder.setNegativeButton("Cancelar", null);
-//		AlertDialog alertDialog=builder.create();
-//		alertDialog.show();
-		
 		((Button)main.findViewById(R.id.bLlaves)).setOnClickListener(this);	
+		new TurnOnBlueTooth().execute();
 		return main;
 
+	}
+	private class TurnOnBlueTooth extends AsyncTask<Void, Void, Void>
+	{
+
+		@Override
+		protected Void doInBackground(Void... params) {
+			try {
+				findBT();
+				openBT();
+			} catch (Exception e) {
+			}
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(Void result) {
+			super.onPostExecute(result);
+		}
+
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+		}
+		
 	}
 
 	public void findBT() {
@@ -189,18 +181,6 @@ public class FragmentBluetooth extends Fragment implements android.view.View.OnC
 		default:
 			break;
 		}
-		
-//		ByteQueue mByteQueue=new ByteQueue(2);
-//		try {
-//			mByteQueue.write("e".getBytes(), 0, 1);
-//
-//			Log.i("", "Data Sent");
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//
-//			Log.i("bluetooth", e.getMessage());
-//		}
-		
 	}
 
 	void closeBT() throws IOException {
@@ -314,14 +294,22 @@ public class FragmentBluetooth extends Fragment implements android.view.View.OnC
 	}
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
-		if(v.getId() == R.id.bLlaves){	
+		switch (v.getId()) {
+		case R.id.bLlaves:
 			try {
+				if(mmOutputStream==null)
+				{
+					Toast.makeText(getActivity(), "Dispositivo BlueTooth no conectado", Toast.LENGTH_SHORT).show();
+					return;
+				}
 				sendData();
 			} catch (IOException e) {
 				Log.i("Error bluetooth ",e.getMessage());
 			}
-			Log.i("","entra al boton");
+			break;
+
+		default:
+			break;
 		}
 	}
 
