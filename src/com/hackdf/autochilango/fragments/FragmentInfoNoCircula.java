@@ -29,13 +29,24 @@ public class FragmentInfoNoCircula extends Fragment {
 public void circulacion() {
 	String ter,v="";
 	String placa= AppPreferences.getCurrentPlate(this.getActivity());
-Calendar c = new GregorianCalendar();
+	Calendar c = new GregorianCalendar();
     String dia;
 	dia = Integer.toString(c.get(Calendar.DATE));
 	placa="";
-	ter=placa.substring(0, placa.length());
+
 	
-	switch(Integer.parseInt(ter)){
+	 int numero=0;
+	try
+	{
+		 numero=Integer.parseInt(placa.substring(2,3));
+		
+	}catch
+	(Exception ex)
+	{
+		numero=Integer.parseInt(placa.substring(placa.length()-2,placa.length()-1));
+	}
+	
+	switch(numero){
 	case 5: case 6:
 		if(dia=="lunes"){
 			v="Hoy no circula";	
