@@ -15,27 +15,27 @@ import com.hackdf.autochilango.preferences.AppPreferences;
 
 public class FragmentInfoNoCircula extends Fragment {
 	private TextView circula;
+	private TextView causas;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View v =inflater.inflate(R.layout.fragment_info_no_circula, null);
 	
-		circula=(TextView)getActivity().findViewById(R.id.textViewCirculacion);
+		circula=(TextView)v.findViewById(R.id.textViewCirculacion);
+		causas=(TextView)v.findViewById(R.id.textViewCausas);
 		circulacion();
 		return v;
 	}	
 	
 public void circulacion() {
-	String ter,v="";
+	String v="";
 	String placa= AppPreferences.getCurrentPlate(this.getActivity());
-	placa="542WAD";
-Calendar c = new GregorianCalendar();
-    String dia;
-	dia = Integer.toString(c.get(Calendar.DATE));
-	placa="";
-	ter=placa.substring(0, placa.length());
+	String diasNoCirulacion="";
 	
-	 int numero=0;
+Calendar c = new GregorianCalendar();
+int dia;
+	dia = (c.get(Calendar.DAY_OF_WEEK));
+		 int numero=0;
 	try
 	{
 		 numero=Integer.parseInt(placa.substring(2,3));
@@ -48,52 +48,59 @@ Calendar c = new GregorianCalendar();
 	
 	switch(numero){
 	case 5: case 6:
-		if(dia=="lunes"){
-			v="Hoy no circula";	
+		if(dia==Calendar.MONDAY){
+			v="no circula";	
 				
 		}else{
-			v="Circula";
+			
+			v="si circula"; diasNoCirulacion=" su matricula no circula los dias Lunes y el primer Sabado de cada mes";
 			
 		}
 		break;
 	case 7: case 8:
-		if(dia=="martes"){
-			v="Hoy no circula";	
+		if(dia==Calendar.TUESDAY){
+			v="no circula";	
 				
 		}else{
-			v="Circula";
+			v="si circula"; diasNoCirulacion=" su matricula no circula los dias Martes y el segundo Sabado de cada mes";
 			
 		}
 		break;
 	case 3: case 4:
-		if(dia=="miercoles"){
-			v="Hoy no circula";	
+		if(dia==Calendar.WEDNESDAY){
+			v="no circula";	
 				
 		}else{
-			v="Circula";
+			v="si circula"; diasNoCirulacion=" su matricula no circula los dias Miercoles y el tercer Sabado de cada mes";
 			
 		}
 		break;
 	case 1: case 2:
-		if(dia=="jueves"){
-			v="Hoy no circula";	
+		if(dia==Calendar.THURSDAY){
+			v="no circula";	
 				
 		}else{
-			v="Circula";
+			v="si circula"; diasNoCirulacion=" su matricula no circula los dias Jueves y el cuarto Sabado de cada mes";
 			
 		}
 		break;
 	case 0: case 9:
-		if(dia=="viernes"){
-			v="Hoy no circula";	
+		if(dia==Calendar.FRIDAY){
+			v="no circula";	
 				
 		}else{
-			v="Circula";
+			v="si circula"; diasNoCirulacion=" su matricula no circula los dias Viernes y el quinto Sabado de cada mes";
 			
 		}
 		break;
+		default:
+
+			v="si circula"; diasNoCirulacion=" su matricula no circula los dias ";
+		break;
 	}
-	circula.setText(v);
+	circula.setText("Placa numero "+placa+" el dia de hoy: "+v);
+	causas.setText(diasNoCirulacion);
+	
 	
 	}
 	
