@@ -211,6 +211,12 @@ public class MainActivity extends FragmentActivity {
     }
 
     @Override
+	protected void onDestroy() {
+    	stopService(new Intent(getApplicationContext(), ServiceBluetoothReceiver.class));
+		super.onDestroy();
+	}
+
+	@Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         // Pass any configuration change to the drawer toggls
