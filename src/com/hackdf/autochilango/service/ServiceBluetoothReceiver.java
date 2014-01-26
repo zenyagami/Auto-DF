@@ -8,6 +8,7 @@ import java.util.UUID;
 
 import com.hackdf.autochilango.R;
 
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
@@ -156,7 +157,12 @@ public class ServiceBluetoothReceiver extends Service{
 		mBuilder.setContentText("Ha pasado algo con tu auto!!!!!!");
 		PendingIntent pi = PendingIntent.getBroadcast(getApplicationContext(), 100,new Intent(CLOSE_NOTIFICATION_BLUETOOTH) , PendingIntent.FLAG_UPDATE_CURRENT);
 		mBuilder.setContentIntent(pi);
-		mNotificationManager.notify(10, mBuilder.build());
+		Notification notif = mBuilder.build();
+		notif.flags =Notification.FLAG_AUTO_CANCEL;
+		notif.defaults |=Notification.DEFAULT_VIBRATE;
+    	notif.defaults |=Notification.DEFAULT_LIGHTS;
+    	notif.defaults |=Notification.DEFAULT_SOUND;
+		mNotificationManager.notify(10, notif);
 	}
 	
 
