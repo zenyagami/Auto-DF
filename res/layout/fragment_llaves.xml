@@ -2,13 +2,51 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:background="@color/window_theme"
+    android:orientation="vertical"
+    android:padding="8dp" >
 
-    <Button
-        android:id="@+id/bLlaves"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Buscar llaves"
-         />
+        android:background="@drawable/card_bg_play"
+        android:orientation="vertical"
+        android:padding="10dp" >
+
+        <TextView
+            style="@style/CardTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Encuentra tus llaves" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:background="?android:attr/dividerHorizontal" />
+
+        <TextView
+            style="@style/CardText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="10dp"
+            android:text="Gracias a la tecnología Bluetooth puedes encontrar ahora tus llaves más facil"
+            android:textColor="@color/holo_blue_dark" />
+
+        <ImageButton
+            android:id="@+id/bLlaves"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_action_accounts"
+            android:text="Buscar llaves" />
+    </LinearLayout>
 
 </LinearLayout>

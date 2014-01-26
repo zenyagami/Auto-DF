@@ -6,7 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.hackdf.autochilango.R;
 import com.hackdf.autochilango.service.ServiceBluetoothReceiver;
@@ -20,7 +20,7 @@ public class FragmentBluetooth extends Fragment implements android.view.View.OnC
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View main = inflater.inflate(R.layout.fragment_llaves, null);
-		((Button)main.findViewById(R.id.bLlaves)).setOnClickListener(this);	
+		((ImageButton)main.findViewById(R.id.bLlaves)).setOnClickListener(this);	
 		return main;
 
 	}
