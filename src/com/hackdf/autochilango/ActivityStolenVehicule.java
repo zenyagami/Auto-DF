@@ -13,7 +13,13 @@ public class ActivityStolenVehicule extends FragmentActivity{
 		super.onCreate(arg0);
 		setContentView(R.layout.fragment_holder);
 		getActionBar().setTitle("Busqueda de Reporte de Robo");
-		Fragment fragment= FragmentInfoPlaca.newInstance(true);
+		String html= (getIntent().getExtras()!=null && getIntent().hasExtra("html"))? getIntent().getExtras().getString("html"): "";
+		String json = getIntent().getExtras().getString("json");
+		Bundle b = new Bundle();
+		b.putString("html", html);
+		b.putBoolean("stolen", true);
+		b.putString("json", json);
+		Fragment fragment= FragmentInfoPlaca.newInstance(b);
 		FragmentManager fragmentManager = getSupportFragmentManager();
 		fragmentManager.beginTransaction()
 				.replace(R.id.content_frame_holder, fragment).commit();

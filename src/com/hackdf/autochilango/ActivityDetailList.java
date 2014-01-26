@@ -18,10 +18,16 @@ public class ActivityDetailList extends FragmentActivity {
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		int resourceId = getIntent().getExtras().getInt("fragment_resource");
 		String title = getIntent().getExtras().getString("title");
+		Bundle b = new Bundle();
+		b.putString("title", title);
+		if(getIntent().getExtras().containsKey("json"))
+		{
+			b.putString("json",getIntent().getExtras().getString("json"));
+		}
 		getActionBar().setTitle(title);
 		Fragment fragment;
 		if (resourceId == 0) {
-			fragment = FragmentVerificationList.newInstance(title);
+			fragment = FragmentVerificationList.newInstance(b);
 		} else {
 			fragment = FragmentOffensesList.newInstance(title);
 		}

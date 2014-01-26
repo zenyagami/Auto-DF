@@ -5,178 +5,171 @@
     android:background="@color/window_theme"
     android:padding="8dp" >
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical" >
-
-    <TextView
-        android:id="@+id/txtDetailTitle"
-        style="@style/CardTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="Información" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/card_bg_play"
-        android:orientation="vertical"
-        android:padding="8dp" >
+        android:orientation="vertical" >
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/txtDetailTitle"
+            style="@style/CardTitle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="10dp"
-            android:orientation="horizontal" >
-
-            <TextView
-                android:id="@+id/textView1"
-                style="@style/CardTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.2"
-                android:text="Verificaciones" />
-
-            <TextView
-                android:id="@+id/txtNumberOfVerification"
-                style="@style/CardText"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginRight="8dp"
-                android:layout_weight="0.9"
-                android:gravity="right|center_vertical"
-                android:textColor="@color/holo_red_dark" />
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/txtModeloCarro"
-            style="@style/CardText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Modelo: Bora 2.5 VW" />
-
-        <TextView
-            android:id="@+id/txtLastVerification"
-            style="@style/CardText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Última verificación: 2009-05-01" />
-
-        <TextView
-            android:id="@+id/txtVerificationResult"
-            style="@style/CardText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Resultado: Cero" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="1dp"
-            android:background="?android:attr/dividerHorizontal" />
-
-        <TextView
-            android:id="@+id/txtDetailVerifications"
-            android:layout_width="match_parent"
-            android:layout_height="38dp"
-            android:background="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:gravity="center_vertical"
-            android:text="Detalles"
-            android:textColor="@color/holo_blue_dark" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/card_bg_play"
-        android:orientation="vertical"
-        android:padding="8dp" >
+            android:text="Información" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="10dp"
-            android:orientation="horizontal" >
+            android:layout_marginTop="8dp"
+            android:background="@drawable/card_bg_play"
+            android:orientation="vertical"
+            android:padding="8dp" >
 
-            <TextView
-                android:id="@+id/textView1"
-                style="@style/CardTitle"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.2"
-                android:text="Infracciones" />
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/textView1"
+                    style="@style/CardTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:text="Verificaciones" />
+
+                <TextView
+                    android:id="@+id/txtNumberOfVerification"
+                    style="@style/CardText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="8dp"
+                    android:layout_weight="0.9"
+                    android:gravity="right|center_vertical"
+                    android:textColor="@color/holo_red_dark" />
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/txtNumberOffenses"
+                android:id="@+id/txtModeloCarro"
                 style="@style/CardText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Modelo: Bora 2.5 VW" />
+
+            <TextView
+                android:id="@+id/txtLastVerification"
+                style="@style/CardText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Última verificación: 2009-05-01" />
+
+            <TextView
+                android:id="@+id/txtVerificationResult"
+                style="@style/CardText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Resultado: Cero" />
+
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginRight="8dp"
-                android:layout_weight="0.9"
-                android:gravity="right|center_vertical"
-                android:textColor="@color/holo_red_dark" />
+                android:layout_height="1dp"
+                android:layout_marginTop="1dp"
+                android:background="?android:attr/dividerHorizontal" />
+
+            <TextView
+                android:id="@+id/txtDetailVerifications"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:gravity="center_vertical"
+                android:text="Detalles"
+                android:textColor="@color/holo_blue_dark" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/txtLastOffense"
-            style="@style/CardText"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Última Infracción: 2009-05-01" />
+            android:background="@drawable/card_bg_play"
+            android:orientation="vertical"
+            android:padding="8dp" >
 
-        <TextView
-            android:id="@+id/txtOffenseStatus"
-            style="@style/CardText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Estado: Pagada" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal" >
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="3dp"
-            android:background="?android:attr/dividerHorizontal" />
+                <TextView
+                    android:id="@+id/textView1"
+                    style="@style/CardTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:text="Infracciones" />
 
-        <TextView
-            android:id="@+id/txtDetailOffenses"
-            android:layout_width="match_parent"
-            android:layout_height="38dp"
-            android:background="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:gravity="center_vertical"
-            android:text="Detalles"
-            android:textColor="@color/holo_blue_dark" />
-    </LinearLayout>
-    <!-- ROBO -->
+                <TextView
+                    android:id="@+id/txtNumberOffenses"
+                    style="@style/CardText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="8dp"
+                    android:layout_weight="0.9"
+                    android:gravity="right|center_vertical"
+                    android:textColor="@color/holo_red_dark" />
+            </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/card_bg_play"
-        android:orientation="vertical"
-        android:padding="8dp"
-        android:visibility="gone" >
+            <TextView
+                android:id="@+id/txtLastOffense"
+                style="@style/CardText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Última Infracción: 2009-05-01" />
+
+            <TextView
+                android:id="@+id/txtOffenseStatus"
+                style="@style/CardText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Estado: Pagada" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="3dp"
+                android:background="?android:attr/dividerHorizontal" />
+
+            <TextView
+                android:id="@+id/txtDetailOffenses"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:gravity="center_vertical"
+                android:text="Detalles"
+                android:textColor="@color/holo_blue_dark" />
+        </LinearLayout>
+        <!-- ROBO -->
 
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/card_bg_play"
+            android:orientation="vertical"
             android:id="@+id/lyRobo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="10dp"
-            android:orientation="horizontal" >
+            android:padding="8dp"
+            android:visibility="gone" >
 
             <TextView
                 android:id="@+id/textView1"
@@ -186,22 +179,13 @@
                 android:layout_weight="0.2"
                 android:text="Reporte de Robo" />
 
-            <ProgressBar
+            <Button
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginRight="8dp"
-                android:layout_weight="0.9"
-                android:gravity="right|center_vertical" />
+                android:layout_height="wrap_content"
+                android:id="@+id/btnChecaRObado"
+                android:text="Consultar Reporte de Robo" />
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/txtInfoRobo"
-            style="@style/CardText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Reporte de ROBO!!!" />
     </LinearLayout>
 
-</LinearLayout>
 </ScrollView>

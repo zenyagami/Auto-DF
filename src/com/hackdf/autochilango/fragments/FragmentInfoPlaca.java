@@ -6,6 +6,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.hackdf.autochilango.ActivityDetailList;
+import com.hackdf.autochilango.ActivityShowRepuve;
 import com.hackdf.autochilango.R;
 import com.hackdf.autochilango.entities.Car;
 import com.hackdf.autochilango.entities.Offenses;
@@ -20,36 +21,54 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class FragmentInfoPlaca extends Fragment implements OnClickListener{
-	public static FragmentInfoPlaca newInstance(boolean isStolen) {
+	
+	public static FragmentInfoPlaca newInstance(Bundle args) {
 		FragmentInfoPlaca f = new FragmentInfoPlaca();
-		Bundle args = new Bundle();
-		args.putBoolean("stolen", isStolen);
 		f.setArguments(args);
 		return f;
 	}
 	private View v;
 	private boolean isStolen;
+	private String html;
+	private String json=null;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		v =inflater.inflate(R.layout.fragment_info_placa, null);
 		((TextView)v.findViewById(R.id.txtDetailVerifications)).setOnClickListener(this);
 		((TextView)v.findViewById(R.id.txtDetailOffenses)).setOnClickListener(this);
+		((Button)v.findViewById(R.id.btnChecaRObado)).setOnClickListener(this);
 		//obtenemos datos de preferencias :D
 		String data = AppPreferences.getJsonCurrentPlate(getActivity());
 		try {
-			Car carInfo = Parser.ParseCarInfoFromJson(new JSONObject(data));
+			Car carInfo;
+			if(getArguments()!=null && getArguments().containsKey("json"))
+			{
+				json = getArguments().getString("json");
+				carInfo = Parser.ParseCarInfoFromJson(new JSONObject(json));
+				
+			}else
+			{
+				carInfo = Parser.ParseCarInfoFromJson(new JSONObject(data));
+			}
+			
 			setupUI(carInfo);
 		} catch (JSONException e) {
 			Toast.makeText(getActivity(), "hubo un error al generar la Info :(", Toast.LENGTH_SHORT).show();
 			e.printStackTrace();
 		}
 		//si es robado mostramos la vista de roboo
-		
+		if(getArguments()!=null && getArguments().containsKey("stolen"))
+		{
+			isStolen=true;
+			html = getArguments().getString("html");
+			v.findViewById(R.id.lyRobo).setVisibility(View.VISIBLE);
+		}
 		return v;
 	}
 	private void setupUI(Car carInfo) {
@@ -111,11 +130,27 @@ public class FragmentInfoPlaca extends Fragment implements OnClickListener{
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.txtDetailOffenses:
-			startActivity(new Intent(getActivity(), ActivityDetailList.class).putExtra("title", "Infracciones").putExtra("fragment_resource", 1) );
+			Intent i = new Intent(getActivity(), ActivityDetailList.class);
+			i.putExtra("title", "Infracciones");
+			i.putExtra("fragment_resource", 1);
+			if(json!=null)
+			{
+				i.putExtra("json", json);
+			}
+			startActivity(i);
 			break;
 		case R.id.txtDetailVerifications:
-			startActivity(new Intent(getActivity(), ActivityDetailList.class).putExtra("title", "Verificaciones").putExtra("fragment_resource", 0) );
+			Intent in = new Intent(getActivity(), ActivityDetailList.class);
+			in.putExtra("title", "Infracciones");
+			in.putExtra("fragment_resource", 0);
+			if(json!=null)
+			{
+				in.putExtra("json", json);
+			}
+			startActivity(in);
 			break;
+		case R.id.btnChecaRObado:
+			startActivity(new Intent(getActivity(), ActivityShowRepuve.class).putExtra("html", html) );
 		default:
 			break;
 		}

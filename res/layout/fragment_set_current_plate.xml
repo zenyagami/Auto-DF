@@ -40,16 +40,15 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="6dp"
             android:text="Ingrese el captcha para continuar"
-            android:textColor="@color/holo_orange_dark" />
+            android:textColor="@color/holo_blue_dark" />
 
-        <ImageView
-            android:id="@+id/imgCaptcha"
-            android:layout_width="100dp"
-            android:layout_height="75dp"
+        <WebView
+            android:id="@+id/wbCaptcha"
+            android:layout_width="140dp"
+            android:layout_height="100dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/ic_launcher" />
+            />
 
         <EditText
             android:id="@+id/etCaptcha"

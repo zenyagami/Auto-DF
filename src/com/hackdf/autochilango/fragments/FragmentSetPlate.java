@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.hackdf.autochilango.ActivityStolenVehicule;
 import com.hackdf.autochilango.MainActivity;
 import com.hackdf.autochilango.R;
 import com.hackdf.autochilango.api.NetClient;
@@ -12,28 +13,35 @@ import com.hackdf.autochilango.preferences.AppPreferences;
 import com.hackdf.autochilango.utils.Dialogs;
 import com.hackdf.autochilango.utils.Utils;
 
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.webkit.JavascriptInterface;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class FragmentSetPlate extends Fragment implements OnClickListener {
 
+	private static final String REPUVE ="http://www2.repuve.gob.mx:8080/ciudadania/servletconsulta?placa=%s&vin=&folio=&nrpv=&captcha=%s&pageSource=index.jsp";
 	private GetPlateInfo getPlateInfo;
 	private EditText etPlates;
 	private EditText etCaptcha; 
 	private boolean stoledFragment;
-	private ImageView imgCaptcha;
+	private WebView wbCaptcha;
+	private boolean finish;
+	private String htmlRepuve;
+	
 	public static FragmentSetPlate newInstance(boolean isStolen) {
 		FragmentSetPlate f = new FragmentSetPlate();
 		Bundle args = new Bundle();
@@ -49,18 +57,63 @@ public class FragmentSetPlate extends Fragment implements OnClickListener {
 		((Button) v.findViewById(R.id.btnCanelPlate)).setOnClickListener(this);
 		etPlates = (EditText) v.findViewById(R.id.etPlates);
 		etCaptcha = (EditText)v.findViewById(R.id.etCaptcha);
-		imgCaptcha = (ImageView)v.findViewById(R.id.imgCaptcha);
+		wbCaptcha = (WebView)v.findViewById(R.id.wbCaptcha);
 		if(getArguments()!=null && getArguments().getBoolean("stolen"))
 		{
 			((TextView)v.findViewById(R.id.txtTitleSetCurrentPlate)).setText("Consultar Placa por Robo");
 			stoledFragment = getArguments().getBoolean("stolen");
 			v.findViewById(R.id.captcha).setVisibility(View.VISIBLE);
 			v.findViewById(R.id.btnCanelPlate).setVisibility(View.GONE);
+			setupCaptcha();
 		}
-		new GetCaptcha().execute();
 		return v;
 	}
 
+	private void setupCaptcha() {
+		wbCaptcha.getSettings().setJavaScriptEnabled(true);
+		MyJavaScriptInterface interface1 = new MyJavaScriptInterface(getActivity());
+		wbCaptcha.addJavascriptInterface(interface1, "HtmlViewer");
+		
+		wbCaptcha.setWebViewClient(new WebViewClient() {
+	        @Override
+	        public void onPageFinished(WebView view, String url)
+	        {
+	            /* This call inject JavaScript into the page which just finished loading. */
+	        	wbCaptcha.loadUrl("javascript:window.HtmlViewer.showHTML" +
+                        "('<html>'+document.getElementsByTagName('html')[0].innerHTML+'</html>');");
+	        }
+	    });
+		wbCaptcha.loadUrl("http://www2.repuve.gob.mx:8080/ciudadania/jcaptcha");
+		
+	}
+	   class MyJavaScriptInterface {
+
+	        private Context ctx;
+	        MyJavaScriptInterface(Context ctx) {
+	            this.ctx = ctx;
+	        }
+
+	        @JavascriptInterface
+	        public void showHTML(String html) {
+	            Log.v("test", html);
+	            finish = true;
+	            if(html.contains("logoSEGOB"))
+	            {
+	            	if (getPlateInfo == null) {
+	    				wbCaptcha.setVisibility(View.INVISIBLE);
+	    				getPlateInfo = new GetPlateInfo();
+	    				getPlateInfo.execute("");
+	    			}
+	            	
+	            	htmlRepuve = html;
+	            }
+	        }
+
+	    }
+	   private void startStealActivity(String json)
+	   {
+		   startActivity(new Intent(getActivity(), ActivityStolenVehicule.class).putExtra("html", htmlRepuve).putExtra("json", json));
+	   }
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
@@ -77,12 +130,17 @@ public class FragmentSetPlate extends Fragment implements OnClickListener {
 			{
 				Toast.makeText(getActivity(), "Se nececita el captcha", Toast.LENGTH_SHORT).show();
 				return;
+			}if(etPlates.getText().toString().isEmpty())
+			{
+				Toast.makeText(getActivity(), "Se nececita la placa", Toast.LENGTH_SHORT).show();
+				return;
 			}
 			// manda a llamar API que obtiene la info de la placa :)
-			if (getPlateInfo == null) {
-				getPlateInfo = new GetPlateInfo();
-				getPlateInfo.execute("");
-			}
+			Dialogs.showDialog(getActivity());
+			String plates = etPlates.getText().toString().replace("-", "").trim();
+			finish=false;
+			wbCaptcha.loadUrl(String.format(REPUVE, plates,etCaptcha.getText().toString()));
+			wbCaptcha.setVisibility(View.INVISIBLE);
 			break;
 		default:
 			break;
@@ -90,81 +148,14 @@ public class FragmentSetPlate extends Fragment implements OnClickListener {
 
 	}
 
-	private class GetCaptcha extends AsyncTask<Void, Void, Bitmap>
-	{
-
-		@Override
-		protected Bitmap doInBackground(Void... params) {
-			try {
-				return NetClient.getCaptcha();
-			} catch (Exception e) {
-			}
-			return null;
-			
-		}
-
-		@Override
-		protected void onPostExecute(Bitmap result) {
-			if(getActivity()==null || isDetached() || !isAdded())
-			{
-				return;
-			}
-			Dialogs.dismissLoadingDialog(getActivity());
-			if(result!=null)
-			{
-				imgCaptcha.setImageBitmap(result);
-			}else
-			{
-				Toast.makeText(getActivity(), "Error al obtener el captcha :(", Toast.LENGTH_SHORT).show();
-			}
-		}
-
-		@Override
-		protected void onPreExecute() {
-			Dialogs.showDialog(getActivity());
-		}
-		
-	}
-	private class GetRepuveData extends AsyncTask<String, Void, Void>
-	{
-
-		@Override
-		protected Void doInBackground(String... params) {
-			
-			try {
-				NetClient.getHtmlRepuve(etCaptcha.getText().toString().trim(),params[0]);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}catch (Exception e) {
-			}
-			return null;
-		}
-
-		@Override
-		protected void onPostExecute(Void result) {
-			super.onPostExecute(result);
-			if(getActivity()==null || isDetached() || !isAdded())
-			{
-				return;
-			}
-			
-		}
-
-		@Override
-		protected void onPreExecute() {
-			Dialogs.showDialog(getActivity());
-		}
-		
-		
-	}
-	
 	private class GetPlateInfo extends AsyncTask<String, Void, JSONObject> {
 		String plates ="";
 		@Override
 		protected JSONObject doInBackground(String... params) {
-
-			plates = etPlates.getText().toString().replace("-", "").trim();
+			//empezamos a cargar wl webview con el post :D
+			
 			try {
+				plates = etPlates.getText().toString();
 				return NetClient.getPlatesInfo(plates);
 			} catch (JSONException e) {
 				e.printStackTrace();
@@ -181,24 +172,29 @@ public class FragmentSetPlate extends Fragment implements OnClickListener {
 			if (getActivity() == null || isDetached() || !isAdded()) {
 				return;
 			}
-			getPlateInfo=null;
 			Dialogs.dismissLoadingDialog(getActivity());
+			getPlateInfo=null;
 			if(result==null)
 			{
 				Toast.makeText(getActivity(), "Error al obtener datos :(", Toast.LENGTH_SHORT).show();
+				return;
 			}
-			if(etPlates.getText().toString().isEmpty())
-			{
-				Toast.makeText(getActivity(), "Necesitamos la placa", Toast.LENGTH_SHORT).show();
+			try {
+				if(result.has("consulta") && result.getString("consulta").equals("placa_invalida"))
+				{
+					Toast.makeText(getActivity(), "Placa Inválida", Toast.LENGTH_SHORT).show();
+					return;
+				}
+			} catch (JSONException e1) {
+				e1.printStackTrace();
+				Toast.makeText(getActivity(), "Placa Inválida", Toast.LENGTH_SHORT).show();
+				return;
 			}
 			
 			try {
 				if(stoledFragment)
 				{
-					//mostramos pantalla de "robo" e info de placas
-					//mandamos el "objeto"a robo
-					new GetRepuveData().execute(plates);
-					
+					startStealActivity(result.toString());
 				}else
 				{
 					AppPreferences.setJsonCurrentPlate(getActivity(), result.toString());
@@ -213,13 +209,12 @@ public class FragmentSetPlate extends Fragment implements OnClickListener {
 				Toast.makeText(getActivity(), "Error al Parsear la informacion", Toast.LENGTH_SHORT).show();
 			}
 			
-
 		}
 
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			Dialogs.showDialog(getActivity());
+			
 		}
 
 	}

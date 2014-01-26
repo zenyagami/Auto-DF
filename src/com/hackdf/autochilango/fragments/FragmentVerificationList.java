@@ -23,10 +23,8 @@ import android.widget.Toast;
 
 public class FragmentVerificationList extends Fragment {
 
-	public static FragmentVerificationList newInstance(String title) {
+	public static FragmentVerificationList newInstance(Bundle args) {
 		FragmentVerificationList f = new FragmentVerificationList();
-		Bundle args = new Bundle();
-		args.putString("title", title);
 		f.setArguments(args);
 		return f;
 	}
@@ -40,8 +38,17 @@ public class FragmentVerificationList extends Fragment {
 		txtTitle.setText(title);
 		ListView lv = (ListView) v.findViewById(R.id.lvCarInfo);
 		try {
-			Car carInfo = Parser.ParseCarInfoFromJson(new JSONObject(
-					AppPreferences.getJsonCurrentPlate(getActivity()) ));
+			Car carInfo;
+			if(getArguments()!=null && getArguments().containsKey("json"))
+			{
+				carInfo = Parser.ParseCarInfoFromJson(new JSONObject(getArguments().getString("json")));
+			}else
+			{
+				carInfo = Parser.ParseCarInfoFromJson(new JSONObject(
+						AppPreferences.getJsonCurrentPlate(getActivity()) ));
+			}
+			
+			
 			if (carInfo != null) {
 				ArrayList<Verificacion> verifList = carInfo
 						.getVerificationList();

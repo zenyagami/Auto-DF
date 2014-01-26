@@ -62,6 +62,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+        <activity
+            android:name=".ActivityStolenVehicule"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar" />
+        <activity
+            android:name=".ActivityShowRepuve"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar" />
         <activity
             android:name=".ActivitySetPlate"
             android:theme="@android:style/Theme.Holo.Light.DarkActionBar" />
