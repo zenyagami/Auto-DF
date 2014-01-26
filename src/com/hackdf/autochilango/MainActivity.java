@@ -42,6 +42,7 @@ import com.hackdf.autochilango.fragments.FragmentInfoNoCircula;
 import com.hackdf.autochilango.fragments.FragmentInfoVerificentro;
 
 import com.hackdf.autochilango.preferences.AppPreferences;
+import com.hackdf.autochilango.service.ServiceBluetoothReceiver;
 
 
 public class MainActivity extends FragmentActivity {
@@ -73,7 +74,7 @@ public class MainActivity extends FragmentActivity {
         	return;
         }
         
-        
+        startService(new Intent(getApplicationContext(), ServiceBluetoothReceiver.class));
         setContentView(R.layout.activity_main);
 
         mTitle = mDrawerTitle = getTitle();

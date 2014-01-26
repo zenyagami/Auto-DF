@@ -20,9 +20,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.hackdf.autochilango.R;
+import com.hackdf.autochilango.service.ServiceBluetoothReceiver;
 
 public class FragmentBluetooth extends Fragment implements android.view.View.OnClickListener{
 
@@ -46,7 +46,7 @@ public class FragmentBluetooth extends Fragment implements android.view.View.OnC
 		View main = inflater.inflate(R.layout.fragment_llaves, null);
 		context = main.getContext();
 		((Button)main.findViewById(R.id.bLlaves)).setOnClickListener(this);	
-		new TurnOnBlueTooth().execute();
+		//new TurnOnBlueTooth().execute();
 		return main;
 
 	}
@@ -93,7 +93,7 @@ public class FragmentBluetooth extends Fragment implements android.view.View.OnC
 			for (BluetoothDevice device : pairedDevices) 
 			{
 				Log.i("Nombre de dispositivo", device.getName());
-				if (device.getName().equals(" ELEAZAR")) {
+				if (device.getName().equals("ELEAZAR") || device.getName().equalsIgnoreCase(" ELEAZAR" )) {
 					mmDevice = device;
 					break;
 				}
@@ -296,7 +296,10 @@ public class FragmentBluetooth extends Fragment implements android.view.View.OnC
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.bLlaves:
-			try {
+			getActivity().sendBroadcast(new Intent(ServiceBluetoothReceiver.SEND_NOTIFICATION_BLUETOOTH));
+			
+			
+	/*		try {
 				if(mmOutputStream==null)
 				{
 					Toast.makeText(getActivity(), "Dispositivo BlueTooth no conectado", Toast.LENGTH_SHORT).show();
@@ -305,7 +308,7 @@ public class FragmentBluetooth extends Fragment implements android.view.View.OnC
 				sendData();
 			} catch (IOException e) {
 				Log.i("Error bluetooth ",e.getMessage());
-			}
+			}*/
 			break;
 
 		default:

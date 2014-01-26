@@ -75,5 +75,14 @@
         <activity
             android:name=".ActivityDetailList"
             android:theme="@android:style/Theme.Holo.Light.DarkActionBar" />
+        <service android:name="com.hackdf.autochilango.service.ServiceBluetoothReceiver"/>
+          <receiver
+            android:name="com.hackdf.autochilango.broadcast.BroadcastReceiverNotification"
+            android:enabled="true"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.hackdf.chilango.STOP_NOTIFICATION" />
+            </intent-filter>
+        </receiver>
     </application>
 </manifest>
