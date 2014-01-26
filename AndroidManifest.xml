@@ -71,5 +71,4 @@
             android:name=".ActivityDetailList"
             android:theme="@android:style/Theme.Holo.Light.DarkActionBar" />
     </application>
-
 </manifest>
