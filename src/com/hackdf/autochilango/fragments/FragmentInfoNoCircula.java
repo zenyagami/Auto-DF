@@ -19,16 +19,18 @@ public class FragmentInfoNoCircula extends Fragment {
 	private TextView causas;
 	private TextView placatxt;
 	private TextView lblColor;
+	private TextView placengo;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View v =inflater.inflate(R.layout.fragment_info_no_circula, null);
 	
-		circula=(TextView)v.findViewById(R.id.textViewCirculacion);
+		placengo=(TextView)v.findViewById(R.id.textViewPlacaEngomado);
 		causas=(TextView)v.findViewById(R.id.textViewCausas);
 		placatxt=(TextView)v.findViewById(R.id.textPlaca);
 		lblColor=(TextView)v.findViewById(R.id.textColor);
+		circula=(TextView)v.findViewById(R.id.textViewCircula);
 		circulacion();
 		return v;
 	}	
@@ -121,8 +123,9 @@ int dia;
 			v="si circula"; diasNoCirulacion=" su matricula no circula los dias ";
 		break;
 	}
-	circula.setText("Placa numero:"+" el dia de hoy: "+v);
+	placengo.setText("Engomado y PLaca:");
 	placatxt.setText(placa);
+	circula.setText(" el dia de hoy: "+v);
 	causas.setText(diasNoCirulacion);
 	
 	
