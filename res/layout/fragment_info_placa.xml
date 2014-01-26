@@ -162,6 +162,7 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/card_bg_play"
         android:orientation="vertical"
+        android:visibility="gone"
         android:padding="8dp" >
 
         <LinearLayout
