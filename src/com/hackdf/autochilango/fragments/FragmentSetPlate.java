@@ -125,6 +125,38 @@ public class FragmentSetPlate extends Fragment implements OnClickListener {
 		}
 		
 	}
+	private class GetRepuveData extends AsyncTask<String, Void, Void>
+	{
+
+		@Override
+		protected Void doInBackground(String... params) {
+			
+			try {
+				NetClient.getHtmlRepuve(etCaptcha.getText().toString().trim(),params[0]);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}catch (Exception e) {
+			}
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(Void result) {
+			super.onPostExecute(result);
+			if(getActivity()==null || isDetached() || !isAdded())
+			{
+				return;
+			}
+			
+		}
+
+		@Override
+		protected void onPreExecute() {
+			Dialogs.showDialog(getActivity());
+		}
+		
+		
+	}
 	
 	private class GetPlateInfo extends AsyncTask<String, Void, JSONObject> {
 		String plates ="";
@@ -155,10 +187,17 @@ public class FragmentSetPlate extends Fragment implements OnClickListener {
 			{
 				Toast.makeText(getActivity(), "Error al obtener datos :(", Toast.LENGTH_SHORT).show();
 			}
+			if(etPlates.getText().toString().isEmpty())
+			{
+				Toast.makeText(getActivity(), "Necesitamos la placa", Toast.LENGTH_SHORT).show();
+			}
+			
 			try {
 				if(stoledFragment)
 				{
 					//mostramos pantalla de "robo" e info de placas
+					//mandamos el "objeto"a robo
+					new GetRepuveData().execute(plates);
 					
 				}else
 				{
