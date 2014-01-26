@@ -10,7 +10,7 @@ public class BroadcastReceiverNotification extends BroadcastReceiver{
 
 	@Override
 	public void onReceive(Context context, Intent intent) {
-		context.sendBroadcast(new Intent(ServiceBluetoothReceiver.SEND_NOTIFICATION_BLUETOOTH));
+		context.sendBroadcast(new Intent(ServiceBluetoothReceiver.SEND_NOTIFICATION_BLUETOOTH).putExtra("pos", 2));
 	}
 
 }

@@ -22,6 +22,7 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+import android.widget.Toast;
 
 public class ServiceBluetoothReceiver extends Service{
 	public static final String CLOSE_NOTIFICATION_BLUETOOTH ="com.hackdf.chilango.STOP_NOTIFICATION";
@@ -35,13 +36,14 @@ public class ServiceBluetoothReceiver extends Service{
 	byte[] readBuffer;
 	int readBufferPosition;
 	int counter;
-	int i=1;
+	
 	private BroadcastReceiver mReceiver= new BroadcastReceiver() {
 		
 		@Override
 		public void onReceive(Context context, Intent intent) {
 			try {
-				sendData();
+				int i =intent.getExtras().getInt("pos");
+				sendData(i);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -64,8 +66,8 @@ public class ServiceBluetoothReceiver extends Service{
 			{
 				//empezamos la escucha de data ;D
 				try {
-					openBT();
 					handler.removeCallbacks(run);
+					openBT();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -129,6 +131,18 @@ public class ServiceBluetoothReceiver extends Service{
 																				// ID
 		mmSocket = mmDevice.createRfcommSocketToServiceRecord(uuid);
 		mmSocket.connect();
+		if(!mmSocket.isConnected())
+		{
+			mmDevice=null;
+			handler.post(run);
+			return;
+		}
+		   new Handler().post(new Runnable() {
+		        @Override
+		        public void run() {
+		             Toast.makeText(getApplicationContext(),"Bluetooth Conectado",Toast.LENGTH_SHORT).show();
+		        }
+		    });
 		mmOutputStream = mmSocket.getOutputStream();
 		mmInputStream = mmSocket.getInputStream();
 		beginListenForData();
@@ -147,7 +161,7 @@ public class ServiceBluetoothReceiver extends Service{
 	
 
 	void beginListenForData() {
-		final Handler handler = new Handler();
+		//final Handler handler = new Handler();
 		final byte delimiter = 80; // This is the ASCII code for a newline
 									// character
 
@@ -196,9 +210,13 @@ public class ServiceBluetoothReceiver extends Service{
 
 		workerThread.start();
 	}
-	void sendData() throws IOException {
+	void sendData(int i) throws IOException {
 		// String msg = myTextbox.getText().toString();
 		// msg += "\n";
+		if(mmOutputStream==null)
+		{
+			return;
+		}
 		switch (i) {
 		case 1://Prender
 			byte[] mBuffer = new byte[1];
