@@ -26,7 +26,6 @@ import com.hackdf.autochilango.db.Estacionamiento;
 import com.hackdf.autochilango.db.Verificentro;
 public class FragmentlInfoEstacionamiento extends Fragment{
 	private GoogleMap gMap;
-	private Marker marcador = null;
 	private DatasetsDataSource dataSource;
 	private final LatLng CoordenadaInicia = new LatLng(19.42761, -99.16795);
 	@Override
@@ -74,7 +73,7 @@ public class FragmentlInfoEstacionamiento extends Fragment{
 			List<Estacionamiento> lista = dataSource.getEstas();
 			for(Estacionamiento estacionamiento: lista)
 			{
-				marcador = gMap
+				gMap
 						.addMarker(ponerMarcador(new LatLng(estacionamiento.getLng(),estacionamiento.getLat()),
 								"Lugares Disponibles:",""+estacionamiento.getCajones(), R.drawable.ic_launcher));
 				Log.i("latLong:", (""+ estacionamiento.getLat() + "," + estacionamiento.getLng()));
@@ -92,7 +91,7 @@ public class FragmentlInfoEstacionamiento extends Fragment{
 		List<Estacionamiento> lista = dataSource.getEstas();
 		for(Estacionamiento estacionamiento: lista)
 		{
-			marcador = gMap
+			 gMap
 					.addMarker(ponerMarcador(new LatLng(estacionamiento.getLat(),estacionamiento.getLng()),"",
 								"", R.drawable.ic_launcher));
 			Log.i("latLong:", (""+ estacionamiento.getLat() + "," + estacionamiento.getLng()));
@@ -106,7 +105,7 @@ public class FragmentlInfoEstacionamiento extends Fragment{
 		List<Verificentro> lista = dataSource.getVeris();
 		for(Verificentro verificentro: lista)
 		{
-			marcador = gMap
+			 gMap
 					.addMarker(ponerMarcador(new LatLng(verificentro.getLat(),verificentro.getLng()),"",
 								"", R.drawable.ic_launcher));
 			Log.i("latLong:", (""+ verificentro.getLat() + "," + verificentro.getLng()));
