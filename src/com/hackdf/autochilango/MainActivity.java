@@ -42,6 +42,7 @@ import com.hackdf.autochilango.fragments.FragmentInfoNoCircula;
 import com.hackdf.autochilango.fragments.FragmentInfoVerificentro;
 
 import com.hackdf.autochilango.preferences.AppPreferences;
+import com.hackdf.bluetooth.FragmentBluetooth;
 
 
 public class MainActivity extends FragmentActivity {
@@ -177,7 +178,7 @@ public class MainActivity extends FragmentActivity {
 			fragment= new FragmentInfoNoCircula();
 			break;
 		case NAVIGATION_ENCUENTRA_LLAVES: 
-			fragment  = new FragmentSetPlate();
+			fragment  = new  FragmentBluetooth();
 			break;
 		case NAVIGATION_CALIDAD_AIRE:
 			fragment= new FragmentInfoAire();

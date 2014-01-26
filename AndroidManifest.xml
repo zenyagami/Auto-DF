@@ -23,6 +23,9 @@
         android:minSdkVersion="15"
         android:targetSdkVersion="19" />
 
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+
     <permission
         android:name="com.hackdf.autochilango.MAPS_RECEIVE"
         android:protectionLevel="signature" />
