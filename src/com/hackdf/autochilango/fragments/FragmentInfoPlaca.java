@@ -6,6 +6,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.hackdf.autochilango.ActivityDetailList;
+import com.hackdf.autochilango.ActivitySetPlate;
 import com.hackdf.autochilango.ActivityShowRepuve;
 import com.hackdf.autochilango.R;
 import com.hackdf.autochilango.entities.Car;
@@ -18,6 +19,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -33,7 +37,6 @@ public class FragmentInfoPlaca extends Fragment implements OnClickListener{
 		return f;
 	}
 	private View v;
-	private boolean isStolen;
 	private String html;
 	private String json=null;
 	@Override
@@ -65,7 +68,6 @@ public class FragmentInfoPlaca extends Fragment implements OnClickListener{
 		//si es robado mostramos la vista de roboo
 		if(getArguments()!=null && getArguments().containsKey("stolen"))
 		{
-			isStolen=true;
 			html = getArguments().getString("html");
 			v.findViewById(R.id.lyRobo).setVisibility(View.VISIBLE);
 		}
@@ -75,6 +77,27 @@ public class FragmentInfoPlaca extends Fragment implements OnClickListener{
 		setupVerification(carInfo);
 		setupOffenses(carInfo);
 		
+	}
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setHasOptionsMenu(true);
+	}
+	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+		inflater.inflate(R.menu.main, menu);
+		super.onCreateOptionsMenu(menu, inflater);
+	}
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.action_edit:
+			startActivity(new Intent(getActivity(), ActivitySetPlate.class).putExtra("edit", true));
+			return true;
+		default:
+			break;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 	private void setupOffenses(Car carInfo) {
 		

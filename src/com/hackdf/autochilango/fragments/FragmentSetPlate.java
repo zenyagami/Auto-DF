@@ -39,13 +39,18 @@ public class FragmentSetPlate extends Fragment implements OnClickListener {
 	private EditText etCaptcha; 
 	private boolean stoledFragment;
 	private WebView wbCaptcha;
-	private boolean finish;
 	private String htmlRepuve;
+	private boolean isEdit;
 	
 	public static FragmentSetPlate newInstance(boolean isStolen) {
 		FragmentSetPlate f = new FragmentSetPlate();
 		Bundle args = new Bundle();
 		args.putBoolean("stolen", isStolen);
+		f.setArguments(args);
+		return f;
+	}
+	public static FragmentSetPlate newInstance(Bundle args) {
+		FragmentSetPlate f = new FragmentSetPlate();
 		f.setArguments(args);
 		return f;
 	}
@@ -65,6 +70,10 @@ public class FragmentSetPlate extends Fragment implements OnClickListener {
 			v.findViewById(R.id.captcha).setVisibility(View.VISIBLE);
 			v.findViewById(R.id.btnCanelPlate).setVisibility(View.GONE);
 			setupCaptcha();
+		}
+		if(getArguments()!=null && getArguments().containsKey("edit"))
+		{
+			isEdit=true;
 		}
 		return v;
 	}
@@ -96,7 +105,6 @@ public class FragmentSetPlate extends Fragment implements OnClickListener {
 	        @JavascriptInterface
 	        public void showHTML(String html) {
 	            Log.v("test", html);
-	            finish = true;
 	            if(html.contains("logoSEGOB"))
 	            {
 	            	if (getPlateInfo == null) {
@@ -118,7 +126,11 @@ public class FragmentSetPlate extends Fragment implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.btnCanelPlate:
-
+			if(isEdit)
+			{
+				startActivity(new Intent(getActivity(), MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TOP| Intent.FLAG_ACTIVITY_NEW_TASK));
+				getActivity().finish();
+			}
 			break;
 		case R.id.btnAcceptPlate:
 			if(!Utils.isOnline(getActivity()))
@@ -135,12 +147,22 @@ public class FragmentSetPlate extends Fragment implements OnClickListener {
 				Toast.makeText(getActivity(), "Se nececita la placa", Toast.LENGTH_SHORT).show();
 				return;
 			}
-			// manda a llamar API que obtiene la info de la placa :)
-			Dialogs.showDialog(getActivity());
-			String plates = etPlates.getText().toString().replace("-", "").trim();
-			finish=false;
-			wbCaptcha.loadUrl(String.format(REPUVE, plates,etCaptcha.getText().toString()));
-			wbCaptcha.setVisibility(View.INVISIBLE);
+			if(stoledFragment)
+			{
+				// manda a llamar API que obtiene la info de la placa :)
+				Dialogs.showDialog(getActivity());
+				String plates = etPlates.getText().toString().replace("-", "").trim();
+				wbCaptcha.loadUrl(String.format(REPUVE, plates,etCaptcha.getText().toString()));
+				wbCaptcha.setVisibility(View.INVISIBLE);
+			}else
+			{
+				if (getPlateInfo == null) {
+    				getPlateInfo = new GetPlateInfo();
+    				getPlateInfo.execute("");
+    			}
+            	
+			}
+			
 			break;
 		default:
 			break;
@@ -214,6 +236,9 @@ public class FragmentSetPlate extends Fragment implements OnClickListener {
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
+			if (!stoledFragment) {
+				Dialogs.showDialog(getActivity());
+			}
 			
 		}
 

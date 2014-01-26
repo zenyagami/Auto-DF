@@ -14,7 +14,12 @@ public class ActivitySetPlate extends FragmentActivity{
 		super.onCreate(arg0);
 		setContentView(R.layout.fragment_holder);
 		getActionBar().setTitle("Registro de Placa");
-		Fragment fragment= new FragmentSetPlate();
+		Bundle b=new Bundle();
+		if(getIntent().hasExtra("edit"))
+		{
+			b.putBoolean("edit", true);
+		}
+		Fragment fragment= FragmentSetPlate.newInstance(b);
 		FragmentManager fragmentManager = getSupportFragmentManager();
 		fragmentManager.beginTransaction()
 				.replace(R.id.content_frame_holder, fragment).commit();
