@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="label_shadow">
+        <item name="android:shadowColor">@color/text_shadow</item>
+        <item name="android:shadowRadius">2.0</item>
+    </style>
+</resources>

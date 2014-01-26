@@ -212,7 +212,7 @@ public class MainActivity extends FragmentActivity {
 
     @Override
 	protected void onDestroy() {
-    	stopService(new Intent(getApplicationContext(), ServiceBluetoothReceiver.class));
+    	//stopService(new Intent(getApplicationContext(), ServiceBluetoothReceiver.class));
 		super.onDestroy();
 	}
 
