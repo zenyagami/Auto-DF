@@ -1,4 +1,4 @@
-package com.hackdf.bluetooth;
+package com.hackdf.autochilango.fragments;
 
 import java.io.IOException;
 import java.io.InputStream;

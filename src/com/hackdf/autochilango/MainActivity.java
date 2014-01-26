@@ -16,6 +16,7 @@
 
 package com.hackdf.autochilango;
 
+import com.hackdf.autochilango.fragments.FragmentBluetooth;
 import com.hackdf.autochilango.fragments.FragmentInfoAire;
 import com.hackdf.autochilango.fragments.FragmentInfoPlaca;
 import com.hackdf.autochilango.fragments.FragmentSetPlate;
@@ -42,7 +43,6 @@ import com.hackdf.autochilango.fragments.FragmentInfoNoCircula;
 import com.hackdf.autochilango.fragments.FragmentInfoVerificentro;
 
 import com.hackdf.autochilango.preferences.AppPreferences;
-import com.hackdf.bluetooth.FragmentBluetooth;
 
 
 public class MainActivity extends FragmentActivity {
