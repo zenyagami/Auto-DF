@@ -13,6 +13,7 @@ import com.hackdf.autochilango.utils.Dialogs;
 import com.hackdf.autochilango.utils.Utils;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -22,6 +23,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,7 +31,9 @@ public class FragmentSetPlate extends Fragment implements OnClickListener {
 
 	private GetPlateInfo getPlateInfo;
 	private EditText etPlates;
+	private EditText etCaptcha; 
 	private boolean stoledFragment;
+	private ImageView imgCaptcha;
 	public static FragmentSetPlate newInstance(boolean isStolen) {
 		FragmentSetPlate f = new FragmentSetPlate();
 		Bundle args = new Bundle();
@@ -44,11 +48,16 @@ public class FragmentSetPlate extends Fragment implements OnClickListener {
 		((Button) v.findViewById(R.id.btnAcceptPlate)).setOnClickListener(this);
 		((Button) v.findViewById(R.id.btnCanelPlate)).setOnClickListener(this);
 		etPlates = (EditText) v.findViewById(R.id.etPlates);
+		etCaptcha = (EditText)v.findViewById(R.id.etCaptcha);
+		imgCaptcha = (ImageView)v.findViewById(R.id.imgCaptcha);
 		if(getArguments()!=null && getArguments().getBoolean("stolen"))
 		{
 			((TextView)v.findViewById(R.id.txtTitleSetCurrentPlate)).setText("Consultar Placa por Robo");
 			stoledFragment = getArguments().getBoolean("stolen");
+			v.findViewById(R.id.captcha).setVisibility(View.VISIBLE);
+			v.findViewById(R.id.btnCanelPlate).setVisibility(View.GONE);
 		}
+		new GetCaptcha().execute();
 		return v;
 	}
 
@@ -64,6 +73,11 @@ public class FragmentSetPlate extends Fragment implements OnClickListener {
 				Toast.makeText(getActivity(), "No se tiene acceso a Internet :(", Toast.LENGTH_SHORT).show();
 				return;
 			}
+			if(stoledFragment && etCaptcha.getText().toString().isEmpty())
+			{
+				Toast.makeText(getActivity(), "Se nececita el captcha", Toast.LENGTH_SHORT).show();
+				return;
+			}
 			// manda a llamar API que obtiene la info de la placa :)
 			if (getPlateInfo == null) {
 				getPlateInfo = new GetPlateInfo();
@@ -76,6 +90,42 @@ public class FragmentSetPlate extends Fragment implements OnClickListener {
 
 	}
 
+	private class GetCaptcha extends AsyncTask<Void, Void, Bitmap>
+	{
+
+		@Override
+		protected Bitmap doInBackground(Void... params) {
+			try {
+				return NetClient.getCaptcha();
+			} catch (Exception e) {
+			}
+			return null;
+			
+		}
+
+		@Override
+		protected void onPostExecute(Bitmap result) {
+			if(getActivity()==null || isDetached() || !isAdded())
+			{
+				return;
+			}
+			Dialogs.dismissLoadingDialog(getActivity());
+			if(result!=null)
+			{
+				imgCaptcha.setImageBitmap(result);
+			}else
+			{
+				Toast.makeText(getActivity(), "Error al obtener el captcha :(", Toast.LENGTH_SHORT).show();
+			}
+		}
+
+		@Override
+		protected void onPreExecute() {
+			Dialogs.showDialog(getActivity());
+		}
+		
+	}
+	
 	private class GetPlateInfo extends AsyncTask<String, Void, JSONObject> {
 		String plates ="";
 		@Override
