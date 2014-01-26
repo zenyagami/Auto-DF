@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DatasetsDBHelper extends SQLiteOpenHelper {
 	
 	private static final String DATABASE_NAME = "DATASETS";
-    private static final int DATABASE_VERSION =13;
+    private static final int DATABASE_VERSION =16;
     
     public static class TablaVerificentro{
         public static String TABLA_VERIFICENTRO = "verificentro";
@@ -20,6 +20,22 @@ public class DatasetsDBHelper extends SQLiteOpenHelper {
         public static String COLUMNA_LNG = "longitud";
         }
     
+    public static class TablaEstacionamientos{
+        public static String TABLA_ESTACIONAMIENTO = "estacionamiento";
+        public static String COLUMNA_ID = "_id";
+        public static String COLUMNA_DELEGACION = "delegacion";
+        public static String COLUMNA_CALLE= "calle";
+        public static String COLUMNA_NUM = "numero";
+        public static String COLUMNA_BIS = "bis";
+        public static String COLUMNA_COLONIA = "colonia";
+        public static String COLUMNA_EDIFICIO = "edificio";
+        public static String COLUMNA_ESTRUCT = "estructura";
+        public static String COLUMNA_SUPERF = "superficie";
+        public static String COLUMNA_CAJONES = "cajones";
+        public static String COLUMNA_LAT = "latitud";
+        public static String COLUMNA_LNG = "longitud";
+        }
+    
     private static final String DATABASE_CREATE = "create table "
             + TablaVerificentro.TABLA_VERIFICENTRO + "(" 
     		+ TablaVerificentro.COLUMNA_ID + " integer primary key, "
@@ -28,7 +44,22 @@ public class DatasetsDBHelper extends SQLiteOpenHelper {
             + TablaVerificentro.COLUMNA_DELEGACION + " text not null,"
             + TablaVerificentro.COLUMNA_TEL + " text not null," 
             + TablaVerificentro.COLUMNA_LAT + " double not null," 
-            + TablaVerificentro.COLUMNA_LNG + " double not null);";
+            + TablaVerificentro.COLUMNA_LNG + " double not null);  ";
+            
+			/*"create table "
+			+ TablaEstacionamientos.TABLA_ESTACIONAMIENTO + "(" 
+			+ TablaEstacionamientos.COLUMNA_ID + " text primary key, "
+			+ TablaEstacionamientos.COLUMNA_DELEGACION + " text not null," 
+			+ TablaEstacionamientos.COLUMNA_CALLE + " text not null,"
+			+ TablaEstacionamientos.COLUMNA_NUM + " text not null,"
+			+ TablaEstacionamientos.COLUMNA_BIS + " text not null," 
+			+ TablaEstacionamientos.COLUMNA_COLONIA + " text not null," 
+			+ TablaEstacionamientos.COLUMNA_EDIFICIO + " text not null,"
+			+ TablaEstacionamientos.COLUMNA_ESTRUCT + " text not null,"
+			+ TablaEstacionamientos.COLUMNA_SUPERF + " text not null," 
+			+ TablaEstacionamientos.COLUMNA_CAJONES + " integer not null,"
+			+ TablaEstacionamientos.COLUMNA_LAT + " double not null," 
+			+ TablaEstacionamientos.COLUMNA_LNG + " double not null); go ";*/
 
 	public DatasetsDBHelper(Context context){
 		// TODO Auto-generated constructor stub
@@ -39,6 +70,22 @@ public class DatasetsDBHelper extends SQLiteOpenHelper {
 	public void onCreate(SQLiteDatabase db) {
 		// TODO Auto-generated method stub
 		db.execSQL(DATABASE_CREATE);
+		
+		db.execSQL("create table "
+				+ TablaEstacionamientos.TABLA_ESTACIONAMIENTO + "(" 
+				+ TablaEstacionamientos.COLUMNA_ID + " text primary key, "
+				+ TablaEstacionamientos.COLUMNA_DELEGACION + " text not null," 
+				+ TablaEstacionamientos.COLUMNA_CALLE + " text not null,"
+				+ TablaEstacionamientos.COLUMNA_NUM + " text not null,"
+				+ TablaEstacionamientos.COLUMNA_BIS + " text not null," 
+				+ TablaEstacionamientos.COLUMNA_COLONIA + " text not null," 
+				+ TablaEstacionamientos.COLUMNA_EDIFICIO + " text not null,"
+				+ TablaEstacionamientos.COLUMNA_ESTRUCT + " text not null,"
+				+ TablaEstacionamientos.COLUMNA_SUPERF + " text not null," 
+				+ TablaEstacionamientos.COLUMNA_CAJONES + " integer not null,"
+				+ TablaEstacionamientos.COLUMNA_LAT + " double not null," 
+				+ TablaEstacionamientos.COLUMNA_LNG + " double not null); go ");
+		
 		db.execSQL("INSERT INTO "+TablaVerificentro.TABLA_VERIFICENTRO+" values  (9001,'CONTROL AMBIENTAL IXTAPALAPA, S.A. DE C.V.','PEDRO ACEVES # 70 ESQ. CAYETANO ANDRADE, COL. STA. MARTHA ACATITLA','IZTAPALAPA','57335157 57347163',19.3672194444444,-99.01815);");
 		db.execSQL("INSERT INTO "+TablaVerificentro.TABLA_VERIFICENTRO+" values  (9002,'CONTROL ATMOSFERICO DE MEXICO, S.A. DE C.V.','RODOLFO GAONA # 86, COL. LOMAS DE SOTELO','MIGUEL HIDALGO','52803460',19.4522444444444,-99.2179638888889);");
 		db.execSQL("INSERT INTO "+TablaVerificentro.TABLA_VERIFICENTRO+" values  (9003,'CONTROL ATMOSFERICO DE MEXICO, S.A. DE C.V.','EJE 5 SUR, MANZANA 5 LOTE, 3 COL. CENTRAL DE ABASTOS','IZTAPALAPA','56940734',19.3802444444444,-99.0900694444444);");
@@ -122,6 +169,59 @@ public class DatasetsDBHelper extends SQLiteOpenHelper {
 		db.execSQL("INSERT INTO "+TablaVerificentro.TABLA_VERIFICENTRO+" values  (9083,'INGENIERIA Y VERIFICACION PANTITLAN S.A. DE C.V.','AV. PROSPERIDAD # 220 COL. PANTITLAN','IZTACALCO','57008665 24569330',19.4193611111111,-99.0575138888889);");
 		db.execSQL("INSERT INTO "+TablaVerificentro.TABLA_VERIFICENTRO+" values  (9091,'SISTEMA DE AGUAS DE LA CIUDAD DE MEXICO','AV. CANAL DE APATLACO # 502 COL. CARLOS ZAPATA VELA','IZTACALCO','56495945',19.380075,-99.1007666666667);");
 
+		///Estacionamiento
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0189','MIGUEL HIDALGO','ARQUIMIDES','11','','POLANCO','','','',0,-99.174048,19.400112);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0190','MIGUEL HIDALGO','ARQUIMIDES','130','','POLANCO','1','','',60,-99.190975,19.434047);");
+		
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0191','MIGUEL HIDALGO','ARQUIMIDES','4','','CHAPULTEPEC MORALES','1','','',300,-99.192,19.427304);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0192','MIGUEL HIDALGO','ARQUIMIDES','9','','CHAPULTEPEC MORALES','','','1',70,-99.191705,19.427041);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0193','MIGUEL HIDALGO','ARQUIMIDES','82','','POLANCO','','','1',20,-99.191206,19.432277);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0194','MIGUEL HIDALGO','BLVD AVILA CAMACHO','1','','LOMAS DE CHAPULTEPEC','1','','',715,-99.20399,19.428938);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0195','MIGUEL HIDALGO','ANDRES BELLO','12','','POLANCO','','','','',-99.195475,19.426875);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0196','MIGUEL HIDALGO','ANDRES BELLO','29','','POLANCO','1','','',470,-99.194639,19.426977);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0197','MIGUEL HIDALGO','CAMPOS ELISEOS','204','','POLANCO','1','','',893,-99.192598,19.427929);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0198','MIGUEL HIDALGO','CAMPOS ELISEOS','218','','POLANCO','1','','',350,-99.195465,19.4274);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0199','MIGUEL HIDALGO','CAMPOS ELISEOS','278','','POLANCO','1','','',91,-99.196275,19.427046);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0200','MIGUEL HIDALGO','CAMPOS ELISEOS','219','','POLANCO','','','1',25,-99.19369444,19.42830556);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0201','MIGUEL HIDALGO','CAMPOS ELISEOS','247','','POLANCO','1','1','',68,-99.19479,19.427582);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0202','MIGUEL HIDALGO','CRISTIAN ANDERSON','420','','POLANCO','','','1',12,-99.190423,19.430719);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0203','MIGUEL HIDALGO','EJERCITO NACIONAL','598','','POLANCO','','','','',-99.194296,19.437846);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0204','MIGUEL HIDALGO','EJERCITO NACIONAL','826','','POLANCO','1','','',200,-99.201825,19.438163);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0207','MIGUEL HIDALGO','EUGENIO SUE','20','','POLANCO','','','1',30,-99.19494,19.428204);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0208','MIGUEL HIDALGO','EUGENIO SUE','331','','POLANCO','','','1',35,-99.193819,19.43688);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0209','MIGUEL HIDALGO','EUGENIO SUE','353','','POLANCO','1','','',112,-99.193711,19.437492);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0210','MIGUEL HIDALGO','GALILEO','24','','POLANCO','','','1',50,-99.183039,19.429841);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0211','MIGUEL HIDALGO','GALILEO','S/N','','POLANCO','','','','',-99.193432,19.428149);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0212','MIGUEL HIDALGO','HOMERO','125','','POLANCO','1','','',74,-99.183605,19.435476);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0213','MIGUEL HIDALGO','MOMERO','317','','POLANCO','1','','',64,-99.202026,19.436283);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0214','MIGUEL HIDALGO','HOMERO','1810','','LUIS MORALES','','','1',19,-99.209687,19.436577);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0215','MIGUEL HIDALGO','HOMERO','403','','CHAPULTEPEC MORALES','','','1',12,-99.187459,19.435633);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0216','MIGUEL HIDALGO','HOMERO','440','','','1','','',32,-99.188626,19.435393);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0217','MIGUEL HIDALGO','IBSEN','12','16','POLANCO','','','1',48,-99.201876,19.429646);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0218','MIGUEL HIDALGO','JULIO VERNE','102','','POLANCO','','','1',13,-99.196463,19.430835);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0219','MIGUEL HIDALGO','LAMARTINE','226','','POLANCO','','','1',29,-99.18957,19.434728);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0220','MIGUEL HIDALGO','LAMARTINE','244','','POLANCO','','','1',23,-99.189575,19.434057);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0221','MIGUEL HIDALGO','PRESIDENTE MASARYK','123','','CHAPULTEPEC MORALES','1','','',112,-99.186764,19.431563);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0222','MIGUEL HIDALGO','MASARYK','49','','POLANCO','','','','',-99.182999,19.431513);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0223','MIGUEL HIDALGO','MOLIERE','307','','POLANCO','','','1',60,-99.201107,19.436357);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0224','MIGUEL HIDALGO','MOLIERE','321','','POLANCO','1','','',80,-99.200975,19.437141);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0225','MIGUEL HIDALGO','MOLIERE','342','','POLANCO','','','','',-99.201142,19.437572);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0226','MIGUEL HIDALGO','MOLIERE','353','','POLANCO','1','','',80,-99.200943,19.437244);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0227','MIGUEL HIDALGO','ALFREDO MUSSET','3','','POLANCO','1','','',130,-99.196564,19.432059);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0228','MIGUEL HIDALGO','ISAAC NEWTON','16','','POLANCO','1','','',30,-99.193412,19.42995);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0229','MIGUEL HIDALGO','FRANCISCO PETRARCA','202','','POLANCO','1','','',200,-99.185477,19.435198);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0230','MIGUEL HIDALGO','PLATON','138','','POLANCO','','','1',20,-99.203123,19.437181);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0231','MIGUEL HIDALGO','RINCON DEL BOSQUE','10','','RINCON DEL BOSQUE','','','','',-99.18125,19.42988889);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0232','MIGUEL HIDALGO','SOCRATES','378','','POLANCO','','','1',35,-99.203964,19.431485);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0233','MIGUEL HIDALGO','SOCRATES','343','','POLANCO','','','1',25,-99.204295,19.43302);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0234','MIGUEL HIDALGO','SOFOLES','124','','POLANCO','','','1',42,-99.204707,19.437611);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0238','MIGUEL HIDALGO','TENNYSON','6','','POLANCO','','','1',15,-99.19546,19.427349);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0239','MIGUEL HIDALGO','JULIO VERNE','3','','POLANCO','','','','',-99.197504,19.42741);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0240','MIGUEL HIDALGO','JOSE LUIS LAGRANGE','123','','LOS MORALES','1','','',150,-99.210934,19.43791);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0241','MIGUEL HIDALGO','MANUEL AVILA CAMACHO','47','','LOMAS DE CHAPULTEPEC','','','','',-99.204773,19.429585);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0242','MIGUEL HIDALGO','ARQUIMIDES','94','','POLANCO','1','','',78,-99.191198,19.432611);");
+		db.execSQL("INSERT INTO "+TablaEstacionamientos.TABLA_ESTACIONAMIENTO+" VALUES ('MH-0243','MIGUEL HIDALGO','MOLIERE','328','','POLANCO','1','','',50,-99.201294,19.43665);");
+		
 	}
  
 	
@@ -129,6 +229,7 @@ public class DatasetsDBHelper extends SQLiteOpenHelper {
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		// TODO Auto-generated method stub
 		db.execSQL("DROP TABLE IF EXISTS "+ TablaVerificentro.TABLA_VERIFICENTRO);
+		db.execSQL("DROP TABLE IF EXISTS "+ TablaEstacionamientos.TABLA_ESTACIONAMIENTO);
         onCreate(db);
 	}
 

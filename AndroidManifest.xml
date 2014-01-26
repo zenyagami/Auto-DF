@@ -26,8 +26,6 @@
     <permission
         android:name="com.hackdf.autochilango.MAPS_RECEIVE"
         android:protectionLevel="signature" />
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-    <uses-permission android:name="android.permission.BLUETOOTH" />    
 
     <uses-permission android:name="com.hackdf.autochilango.permission.MAPS_RECEIVE" />
 

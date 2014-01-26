@@ -27,7 +27,14 @@ public class FragmentSetPlate extends Fragment implements OnClickListener {
 
 	private GetPlateInfo getPlateInfo;
 	private EditText etPlates;
-
+	private boolean stoledFragment;
+	public static FragmentSetPlate newInstance(boolean isStolen) {
+		FragmentSetPlate f = new FragmentSetPlate();
+		Bundle args = new Bundle();
+		args.putBoolean("stolen", isStolen);
+		f.setArguments(args);
+		return f;
+	}
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -35,6 +42,11 @@ public class FragmentSetPlate extends Fragment implements OnClickListener {
 		((Button) v.findViewById(R.id.btnAcceptPlate)).setOnClickListener(this);
 		((Button) v.findViewById(R.id.btnCanelPlate)).setOnClickListener(this);
 		etPlates = (EditText) v.findViewById(R.id.etPlates);
+		if(getArguments()!=null && getArguments().getBoolean("stolen"))
+		{
+			stoledFragment = getArguments().getBoolean("stolen");
+		}
+		
 		return v;
 	}
 
@@ -88,10 +100,19 @@ public class FragmentSetPlate extends Fragment implements OnClickListener {
 				Toast.makeText(getActivity(), "Error al obtener datos :(", Toast.LENGTH_SHORT).show();
 			}
 			try {
-				AppPreferences.setJsonCurrentPlate(getActivity(), result.toString());
-				AppPreferences.setCurrentPlate(getActivity(), plates);
-				startActivity(new Intent(getActivity(), MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK) );
-				getActivity().finish();
+				if(stoledFragment)
+				{
+					//mostramos pantalla de "robo" e info de placas
+					
+				}else
+				{
+					AppPreferences.setJsonCurrentPlate(getActivity(), result.toString());
+					AppPreferences.setCurrentPlate(getActivity(), plates);
+					startActivity(new Intent(getActivity(), MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK) );
+					getActivity().finish();
+				}
+				
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 				Toast.makeText(getActivity(), "Error al Parsear la informacion", Toast.LENGTH_SHORT).show();
